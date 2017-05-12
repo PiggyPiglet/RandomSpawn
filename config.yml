@@ -1,19 +1,26 @@
-# This is the default config for RandomRespawn.
+# ------------------------------
+# Copyright (c) PiggyPiglet 2017
+# https://www.piggypiglet.me
+# ------------------------------
+# This is the default config for RandomSpawn.
 # You can add more locations in the location section.
 # locations:
 #   Swamp:
+#     world: survival
 #     x: 632
 #     y: 10
 #     z: 31
 #     yaw: 2
 #     pitch: 7
 #   Bush:
+#     world: hub
 #     x: 4321
 #     y: 120
 #     z: 951
 #     yaw: 4
 #     pitch: 1
 #   Clay:
+#     world: world
 #     x: 66123
 #     y: 109
 #     z: 392
@@ -22,6 +29,7 @@
 
 locations:
   name:
+    world: world
     x: 10
     y: 100
     z: 10

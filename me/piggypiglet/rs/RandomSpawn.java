@@ -30,6 +30,8 @@ public class RandomSpawn extends JavaPlugin {
     public void onEnable() {
         getLogger().info("RandomSpawn v" + getDescription().getVersion() + " enabled.");
 
+        this.getCommand("rs").setExecutor(new RSCommands(this));
+        this.getCommand("rssetspawn").setExecutor(new RSCommands(this));
         getServer().getPluginManager().registerEvents(new RSEvent(this), this);
 
         final FileConfiguration config = this.getConfig();
