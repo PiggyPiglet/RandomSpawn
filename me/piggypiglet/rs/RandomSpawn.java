@@ -32,6 +32,9 @@ public class RandomSpawn extends JavaPlugin {
 
         this.getCommand("rs").setExecutor(new RSCommands(this));
         this.getCommand("rssetspawn").setExecutor(new RSCommands(this));
+        this.getCommand("rstp").setExecutor(new RSCommands(this));
+        this.getCommand("rsinfo").setExecutor(new RSCommands(this));
+        this.getCommand("rsreload").setExecutor(new RSCommands(this));
         getServer().getPluginManager().registerEvents(new RSEvent(this), this);
 
         final FileConfiguration config = this.getConfig();
