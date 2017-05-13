@@ -11,7 +11,6 @@ import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.entity.Player;
 
 import java.util.*;
-import java.util.concurrent.ThreadLocalRandom;
 
 public class RSCommands implements CommandExecutor {
     // ------------------------------
@@ -58,6 +57,7 @@ public class RSCommands implements CommandExecutor {
                     plugin.getConfig().addDefault("locations." + argsstr + ".pitch", pitch);
                     plugin.getConfig().options().copyDefaults(true);
                     plugin.saveConfig();
+                    plugin.reloadConfig();
 
                     p.sendRawMessage(ChatColor.GRAY + argsstr + " set to " + world + ", " + Math.round(x) + ", " + Math.round(y) + ", " + Math.round(z) + ", " + Math.round(yaw) + ", " + Math.round(pitch));
                 } else if (args.length == 0) {
@@ -129,14 +129,17 @@ public class RSCommands implements CommandExecutor {
         if (cmd.getName().equalsIgnoreCase("rsreload")) {
             if (sender instanceof Player) {
                 Player p = (Player) sender;
-                // May cause memory leaks, haven't experienced any yet though. Couldn't get reloadConfig to work correctly.
-                plugin.getServer().getPluginManager().disablePlugin(plugin.getServer().getPluginManager().getPlugin("RandomSpawn"));
-                plugin.getServer().getPluginManager().enablePlugin(plugin.getServer().getPluginManager().getPlugin("RandomSpawn"));
+
+                plugin.reloadConfig();
+                plugin.getPluginLoader().disablePlugin(plugin.getServer().getPluginManager().getPlugin("RandomRespawn"));
+                plugin.getPluginLoader().enablePlugin(plugin.getServer().getPluginManager().getPlugin("RandomRespawn"));
                 p.sendRawMessage(ChatColor.GRAY + "Plugin reloaded.");
             } else if (sender instanceof ConsoleCommandSender) {
                 ConsoleCommandSender c = (ConsoleCommandSender) sender;
 
                 plugin.reloadConfig();
+                plugin.getPluginLoader().disablePlugin(plugin.getServer().getPluginManager().getPlugin("RandomRespawn"));
+                plugin.getPluginLoader().enablePlugin(plugin.getServer().getPluginManager().getPlugin("RandomRespawn"));
                 c.sendRawMessage("Plugin reloaded.");
             }
         }
