@@ -67,6 +67,9 @@ public class RSCommands implements CommandExecutor {
                     plugin.getConfig().addDefault("locations." + argsstr + ".pitch", pitch);
                     plugin.getConfig().options().copyDefaults(true);
                     plugin.saveConfig();
+                    plugin.saveDefaultConfig();
+                    plugin.reloadConfig();
+                    plugin.loadConfig();
 
                     p.sendRawMessage(ChatColor.GRAY + argsstr + " set to " + world + ", " + Math.round(x) + ", " + Math.round(y) + ", " + Math.round(z) + ", " + Math.round(yaw) + ", " + Math.round(pitch));
                 } else if (args.length == 0) {
