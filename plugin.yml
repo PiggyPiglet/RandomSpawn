@@ -20,6 +20,11 @@ commands:
     usage: /rstp [location name]
     permission: randomspawn.teleport
     permission-message: No permission, ask your administrator to add <permission> if you think this is an error.
+  rslist:
+    description: List all the locations
+    usage: /rslist
+    permission: randomspawn.list
+    permission-message: No permission, ask your administrator to add <permission> if you think this is an error.
   rsinfo:
     description: Get information on a location
     usage: /rsinfo [location name]

@@ -33,8 +33,18 @@ public class RSCommands implements CommandExecutor {
                 p.sendRawMessage(ChatColor.RED + "/rs " + ChatColor.DARK_GRAY + "-" + ChatColor.GRAY + " Opens this help page.");
                 p.sendRawMessage(ChatColor.RED + "/rssetspawn [location name] " + ChatColor.DARK_GRAY + "-" + ChatColor.GRAY + " Set a spawn.");
                 p.sendRawMessage(ChatColor.RED + "/rstp [location name]" + ChatColor.DARK_GRAY + " - " + ChatColor.GRAY + "Teleport to a spawn.");
+                p.sendRawMessage(ChatColor.RED + "/rslist" + ChatColor.DARK_GRAY + " - " + ChatColor.GRAY + "List all the locations.");
                 p.sendRawMessage(ChatColor.RED + "/rsinfo [location name]" + ChatColor.DARK_GRAY + " - " + ChatColor.GRAY + "Get information on a certain location.");
-                p.sendRawMessage(ChatColor.RED + "/rsreload" + ChatColor.DARK_GRAY + " - " + ChatColor.GRAY + "Reload RandomSpawn (you must use this after adding new locations manually or ingame).");
+                p.sendRawMessage(ChatColor.RED + "/rsreload" + ChatColor.DARK_GRAY + " - " + ChatColor.GRAY + "Reload RandomSpawn (you must use this after adding new locations through config).");
+            }
+            if (sender instanceof ConsoleCommandSender) {
+                ConsoleCommandSender c = (ConsoleCommandSender) sender;
+
+                c.sendRawMessage(ChatColor.GRAY + "Help for " + ChatColor.RED + "RandomRespawn");
+                c.sendRawMessage(ChatColor.RED + "/rs " + ChatColor.DARK_GRAY + "-" + ChatColor.GRAY + " Opens this help page.");
+                c.sendRawMessage(ChatColor.RED + "/rslist" + ChatColor.DARK_GRAY + " - " + ChatColor.GRAY + "List all the locations.");
+                c.sendRawMessage(ChatColor.RED + "/rsinfo [location name]" + ChatColor.DARK_GRAY + " - " + ChatColor.GRAY + "Get information on a certain location.");
+                c.sendRawMessage(ChatColor.RED + "/rsreload" + ChatColor.DARK_GRAY + " - " + ChatColor.GRAY + "Reload RandomSpawn (you must use this after adding new locations through config).");
             }
         }
         if (cmd.getName().equalsIgnoreCase("rssetspawn")) {
@@ -57,7 +67,6 @@ public class RSCommands implements CommandExecutor {
                     plugin.getConfig().addDefault("locations." + argsstr + ".pitch", pitch);
                     plugin.getConfig().options().copyDefaults(true);
                     plugin.saveConfig();
-                    plugin.reloadConfig();
 
                     p.sendRawMessage(ChatColor.GRAY + argsstr + " set to " + world + ", " + Math.round(x) + ", " + Math.round(y) + ", " + Math.round(z) + ", " + Math.round(yaw) + ", " + Math.round(pitch));
                 } else if (args.length == 0) {
@@ -92,11 +101,22 @@ public class RSCommands implements CommandExecutor {
                 } else if (args.length >= 2) {
                     p.sendRawMessage(ChatColor.GRAY + "You can not use more than 1 argument in " + ChatColor.RED + "/rstp" + ChatColor.GRAY + ".");
                 }
-            }
-            if (sender instanceof ConsoleCommandSender) {
+            } else if (sender instanceof ConsoleCommandSender) {
                 ConsoleCommandSender c = (ConsoleCommandSender) sender;
 
                 c.sendRawMessage("This command can only be executed ingame");
+            }
+        }
+        if (cmd.getName().equalsIgnoreCase("rslist")) {
+            if (sender instanceof Player) {
+                Player p = (Player) sender;
+
+                p.sendRawMessage(ChatColor.GRAY + "Locations list:");
+                p.sendRawMessage(ChatColor.RED+ String.valueOf(plugin.getLocationList()).replace("[", "").replace("]", "").replace(",", "\n").replace(" ", ""));
+            } else if (sender instanceof ConsoleCommandSender) {
+                ConsoleCommandSender c = (ConsoleCommandSender) sender;
+
+                c.sendRawMessage(String.valueOf(plugin.getLocationList()).replace("[", "").replace("]", "").replace(",", "\n").replace(" ", ""));
             }
         }
         if (cmd.getName().equalsIgnoreCase("rsinfo")) {
@@ -124,22 +144,46 @@ public class RSCommands implements CommandExecutor {
                 } else if (args.length >= 2) {
                     p.sendRawMessage(ChatColor.GRAY + "You can not use more than 1 argument in " + ChatColor.RED + "/rsinfo" + ChatColor.GRAY + ".");
                 }
+            } else if (sender instanceof ConsoleCommandSender) {
+                ConsoleCommandSender c = (ConsoleCommandSender) sender;
+                if (args.length == 1 && plugin.getConfig().contains("locations." + argsstr)) {
+                    String world = plugin.getConfig().getString("locations." + argsstr + ".world");
+                    double x = plugin.getConfig().getDouble("locations." + argsstr + ".x");
+                    double y = plugin.getConfig().getDouble("locations." + argsstr + ".y");
+                    double z = plugin.getConfig().getDouble("locations." + argsstr + ".z");
+                    float yaw = plugin.getConfig().getInt("locations." + argsstr + ".yaw");
+                    float pitch = plugin.getConfig().getInt("locations." + argsstr + ".pitch");
+
+                    c.sendRawMessage("Info for " + argsstr);
+                    c.sendRawMessage("World: " + world);
+                    c.sendRawMessage("X: " + Math.round(x));
+                    c.sendRawMessage("Y: " + Math.round(y));
+                    c.sendRawMessage("Z: " + Math.round(z));
+                    c.sendRawMessage("Yaw: " + Math.round(yaw));
+                    c.sendRawMessage("Pitch: " + Math.round(pitch));
+                } else if (args.length == 1 && !plugin.getConfig().contains("locations." + argsstr)) {
+                    c.sendRawMessage("The location you provided was invalid, check for spelling errors and retry.");
+                } else if (args.length == 0) {
+                    c.sendRawMessage("You must provide a location name when using /rsinfo.");
+                } else if (args.length >= 2) {
+                    c.sendRawMessage("You can not use more than 1 argument in /rsinfo.");
+                }
             }
         }
         if (cmd.getName().equalsIgnoreCase("rsreload")) {
             if (sender instanceof Player) {
                 Player p = (Player) sender;
 
+                plugin.saveDefaultConfig();
                 plugin.reloadConfig();
-                plugin.getPluginLoader().disablePlugin(plugin.getServer().getPluginManager().getPlugin("RandomRespawn"));
-                plugin.getPluginLoader().enablePlugin(plugin.getServer().getPluginManager().getPlugin("RandomRespawn"));
+                plugin.loadConfig();
                 p.sendRawMessage(ChatColor.GRAY + "Plugin reloaded.");
             } else if (sender instanceof ConsoleCommandSender) {
                 ConsoleCommandSender c = (ConsoleCommandSender) sender;
 
+                plugin.saveDefaultConfig();
                 plugin.reloadConfig();
-                plugin.getPluginLoader().disablePlugin(plugin.getServer().getPluginManager().getPlugin("RandomRespawn"));
-                plugin.getPluginLoader().enablePlugin(plugin.getServer().getPluginManager().getPlugin("RandomRespawn"));
+                plugin.loadConfig();
                 c.sendRawMessage("Plugin reloaded.");
             }
         }

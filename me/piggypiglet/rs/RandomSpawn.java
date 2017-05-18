@@ -6,6 +6,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.*;
 import java.util.concurrent.ThreadLocalRandom;
+import java.util.stream.Collectors;
 
 public class RandomSpawn extends JavaPlugin {
 	// ------------------------------
@@ -24,19 +25,11 @@ public class RandomSpawn extends JavaPlugin {
     public List<String> getLocationList() {
         if (this.locationList == null)
             this.locationList = new ArrayList<>();
+            this.locationList = locationList.stream().distinct().collect(Collectors.toList());
         return this.locationList;
     }
-    @Override
-    public void onEnable() {
-        getLogger().info("RandomSpawn v" + getDescription().getVersion() + " enabled.");
 
-        this.getCommand("rs").setExecutor(new RSCommands(this));
-        this.getCommand("rssetspawn").setExecutor(new RSCommands(this));
-        this.getCommand("rstp").setExecutor(new RSCommands(this));
-        this.getCommand("rsinfo").setExecutor(new RSCommands(this));
-        this.getCommand("rsreload").setExecutor(new RSCommands(this));
-        getServer().getPluginManager().registerEvents(new RSEvent(this), this);
-
+    public void loadConfig() {
         final FileConfiguration config = this.getConfig();
         config.addDefault("locations.name.world", "world");
         config.addDefault("locations.name.x", 10);
@@ -58,6 +51,20 @@ public class RandomSpawn extends JavaPlugin {
                 }
             }
         }
+    }
+    @Override
+    public void onEnable() {
+        getLogger().info("RandomSpawn v" + getDescription().getVersion() + " enabled.");
+
+        this.getCommand("rs").setExecutor(new RSCommands(this));
+        this.getCommand("rssetspawn").setExecutor(new RSCommands(this));
+        this.getCommand("rstp").setExecutor(new RSCommands(this));
+        this.getCommand("rslist").setExecutor(new RSCommands(this));
+        this.getCommand("rsinfo").setExecutor(new RSCommands(this));
+        this.getCommand("rsreload").setExecutor(new RSCommands(this));
+        getServer().getPluginManager().registerEvents(new RSEvent(this), this);
+
+        loadConfig();
     }
     public void onDisable() {
         getLogger().info("RandomSpawn v" + getDescription().getVersion() + " disabled.");
