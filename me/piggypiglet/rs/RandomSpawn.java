@@ -37,6 +37,7 @@ public class RandomSpawn extends JavaPlugin {
         config.addDefault("locations.name.z", 10);
         config.addDefault("locations.name.yaw", 10);
         config.addDefault("locations.name.pitch", 10);
+        config.addDefault("locations.name.disabled", false);
         config.options().copyDefaults(true);
         saveConfig();
 
@@ -58,6 +59,8 @@ public class RandomSpawn extends JavaPlugin {
 
         this.getCommand("rs").setExecutor(new RSCommands(this));
         this.getCommand("rssetspawn").setExecutor(new RSCommands(this));
+        this.getCommand("rsenablespawn").setExecutor(new RSCommands(this));
+        this.getCommand("rsdisablespawn").setExecutor(new RSCommands(this));
         this.getCommand("rstp").setExecutor(new RSCommands(this));
         this.getCommand("rslist").setExecutor(new RSCommands(this));
         this.getCommand("rsinfo").setExecutor(new RSCommands(this));

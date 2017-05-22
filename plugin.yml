@@ -1,5 +1,5 @@
 name: RandomSpawn
-version: 1.0.0
+version: 1.1.1
 description: A plugin that spawns you at a random set location on join.
 author: PiggyPiglet
 website: https://www.piggypiglet.me
@@ -14,6 +14,16 @@ commands:
     description: Set spawn command
     usage: /rssetspawn [location name]
     permission: randomspawn.setspawn
+    permission-message: No permission, ask your administrator to add <permission> if you think this is an error.
+  rsenablespawn:
+    description: Enable a spawn
+    usage: /rsdenablespawn [location name]
+    permission: randomspawn.enable
+    permission-message: No permission, ask your administrator to add <permission> if you think this is an error.
+  rsdisablespawn:
+    description: Disable a spawn
+    usage: /rsdisablespawn [location name]
+    permission: randomspawn.disable
     permission-message: No permission, ask your administrator to add <permission> if you think this is an error.
   rstp:
     description: Teleport to a spawn
