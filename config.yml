@@ -34,6 +34,7 @@ settings:
     ONLYPLAYER: "&7This command can only be executed by a player!"
     DOESNTEXIST: "&7The location you specified does not exist."
     TOOMUCHARGS: "&7Too many arguments!"
+    RESPAWN: "&7There are no locations defined in config for respawning! You will respawn at the default location."
 data:
   locations:
     name:

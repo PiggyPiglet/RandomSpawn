@@ -1,11 +1,12 @@
 package me.piggypiglet.rs.Events;
 
+import me.piggypiglet.rs.Enums.Messages;
 import me.piggypiglet.rs.Handlers.ChatHandler;
+import me.piggypiglet.rs.Handlers.ConfigHandler;
 import me.piggypiglet.rs.RandomSpawn;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
-import org.bukkit.World;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -19,6 +20,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static me.piggypiglet.rs.Enums.Messages.*;
+
 // ------------------------------
 // Copyright (c) PiggyPiglet 2017
 // https://www.piggypiglet.me
@@ -26,11 +29,13 @@ import java.util.stream.Collectors;
 public class RSEvent implements Listener {
     private RandomSpawn plugin;
     private ChatHandler chat;
+    private ConfigHandler config;
     private HashMap<Player, ItemStack[]> items = new HashMap<>();
 
     public RSEvent() {
         plugin = RandomSpawn.getInstance();
         chat = new ChatHandler();
+        config = new ConfigHandler();
     }
 
     @EventHandler
@@ -82,8 +87,7 @@ public class RSEvent implements Listener {
                 filter(s -> cfg.getBoolean("data.locations." + s + ".respawn")).
                 collect(Collectors.toList());
         if (locations.size() == 0) {
-            chat.send(p, "&7There are no locations defined in config for respawning! You will respawn at the default location.");
-            chat.send(p, String.valueOf(locations));
+            chat.send(p, config.getMessages(RESPAWN));
         } else if (locations.size() > 0) {
             String randomString = plugin.getRandomStringFromList(locations);
             p.teleport(new Location(
@@ -93,8 +97,6 @@ public class RSEvent implements Listener {
                     cfg.getDouble("data.locations." + randomString + ".z"),
                     cfg.getInt("data.locations." + randomString + ".yaw"),
                     cfg.getInt("data.locations." + randomString + ".pitch")));
-            chat.send(p, String.valueOf(locations));
-            chat.send(p, randomString);
         }
     }
 }

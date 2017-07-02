@@ -44,6 +44,7 @@ public class RandomSpawn extends JavaPlugin {
         config.addDefault("settings.chat.ONLYPLAYER", "&7This command can only be executed by a player!");
         config.addDefault("settings.chat.DOESNTEXIST", "&7The location you specified does not exist.");
         config.addDefault("settings.chat.TOOMUCHARGS", "&7Too many arguments!");
+        config.addDefault("settings.chat.TOOMUCHARGS", "&7There are no locations defined in config for respawning! You will respawn at the default location.");
         config.addDefault("data.locations.name.world", "world");
         config.addDefault("data.locations.name.x", 10);
         config.addDefault("data.locations.name.y", 100);
