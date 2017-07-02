@@ -26,12 +26,22 @@
 #     z: 392
 #     yaw: 5
 #     pitch: 1
-
-locations:
-  name:
-    world: world
-    x: 10
-    y: 100
-    z: 10
-    yaw: 4
-    pitch: 4
+settings:
+  chat:
+    PREFIX: "&7[&cRS&7] "
+    NOPERM: "&7No permission for that command."
+    UNKNOWNSUB: "&7Unknown subcommand."
+    ONLYPLAYER: "&7This command can only be executed by a player!"
+    DOESNTEXIST: "&7The location you specified does not exist."
+    TOOMUCHARGS: "&7Too many arguments!"
+data:
+  locations:
+    name:
+      world: world
+      x: 10
+      y: 100
+      z: 10
+      yaw: 4
+      pitch: 4
+      respawn: true
+      disabled: false

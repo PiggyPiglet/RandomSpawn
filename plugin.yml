@@ -1,5 +1,5 @@
 name: RandomSpawn
-version: 1.1.1
+version: 2.0.0
 description: A plugin that spawns you at a random set location on join.
 author: PiggyPiglet
 website: https://www.piggypiglet.me
@@ -10,38 +10,3 @@ commands:
     usage: /rs
     permission: randomspawn.randomspawn
     permission-message: No permission, ask your administator to add <permission> if you think this is an error.
-  rssetspawn:
-    description: Set spawn command
-    usage: /rssetspawn [location name]
-    permission: randomspawn.setspawn
-    permission-message: No permission, ask your administrator to add <permission> if you think this is an error.
-  rsenablespawn:
-    description: Enable a spawn
-    usage: /rsdenablespawn [location name]
-    permission: randomspawn.enable
-    permission-message: No permission, ask your administrator to add <permission> if you think this is an error.
-  rsdisablespawn:
-    description: Disable a spawn
-    usage: /rsdisablespawn [location name]
-    permission: randomspawn.disable
-    permission-message: No permission, ask your administrator to add <permission> if you think this is an error.
-  rstp:
-    description: Teleport to a spawn
-    usage: /rstp [location name]
-    permission: randomspawn.teleport
-    permission-message: No permission, ask your administrator to add <permission> if you think this is an error.
-  rslist:
-    description: List all the locations
-    usage: /rslist
-    permission: randomspawn.list
-    permission-message: No permission, ask your administrator to add <permission> if you think this is an error.
-  rsinfo:
-    description: Get information on a location
-    usage: /rsinfo [location name]
-    permission: randomspawn.info
-    permission-message: No permission, ask your administrator to add <permission> if you think this is an error.
-  rsreload:
-    description: Reload RandomSpawn
-    usage: /rsreload
-    permission: randomspawn.reload
-    permission-message: No permission, ask your administrator to add <permission> if you think this is an error.
