@@ -1,15 +1,9 @@
-package me.piggypiglet.rs.Enums;
+package me.piggypiglet.randomspawn.enums;
 
 // ------------------------------
 // Copyright (c) PiggyPiglet 2017
 // https://www.piggypiglet.me
 // ------------------------------
 public enum Messages {
-    UNKNOWNSUB,
-    ONLYPLAYER,
-    NOPERM,
-    PREFIX,
-    DOESNTEXIST,
-    TOOMUCHARGS,
-    RESPAWN
+    PREFIX
 }
