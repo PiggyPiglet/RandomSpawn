@@ -6,12 +6,13 @@ import lombok.Getter;
 import me.piggypiglet.randomspawn.commands.implementations.HelpCommand;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.entity.Player;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import static me.piggypiglet.randomspawn.utils.file.Lang.*;
+import static me.piggypiglet.randomspawn.file.types.Lang.*;
 
 // ------------------------------
 // Copyright (c) PiggyPiglet 2019
@@ -34,6 +35,11 @@ public final class CommandManager implements CommandExecutor {
                 String cmd = c.getCommand();
 
                 if (text.toLowerCase().startsWith(cmd.toLowerCase())) {
+                    if (c.isPlayerOnly() && !(sender instanceof Player)) {
+                        sender.sendMessage(getMessage(PLAYER_ONLY));
+                        return true;
+                    }
+
                     String[] permissions = c.getPermissions();
 
                     if (Arrays.stream(permissions).anyMatch(sender::hasPermission) || permissions.length == 0) {

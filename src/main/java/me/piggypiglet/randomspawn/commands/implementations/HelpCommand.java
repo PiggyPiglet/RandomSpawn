@@ -8,7 +8,7 @@ import org.bukkit.command.CommandSender;
 import java.util.List;
 import java.util.Optional;
 
-import static me.piggypiglet.randomspawn.utils.file.Lang.*;
+import static me.piggypiglet.randomspawn.file.types.Lang.*;
 
 // ------------------------------
 // Copyright (c) PiggyPiglet 2019

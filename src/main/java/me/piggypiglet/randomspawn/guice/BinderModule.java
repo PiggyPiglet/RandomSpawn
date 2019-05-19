@@ -4,6 +4,7 @@ import com.google.inject.AbstractModule;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
 import me.piggypiglet.randomspawn.RandomSpawn;
+import me.piggypiglet.randomspawn.file.types.Lang;
 
 // ------------------------------
 // Copyright (c) PiggyPiglet 2019
@@ -23,5 +24,6 @@ public final class BinderModule extends AbstractModule {
     @Override
     public void configure() {
         bind(RandomSpawn.class).toInstance(randomSpawn);
+        requestStaticInjection(Lang.CheekyInternalClassToDoThingsThatArentMeantToBeDone.class);
     }
 }

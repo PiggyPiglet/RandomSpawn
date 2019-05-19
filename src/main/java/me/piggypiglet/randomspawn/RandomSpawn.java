@@ -42,7 +42,7 @@ public final class RandomSpawn extends JavaPlugin {
                 break;
 
             case FILES:
-                Stream.of("config", "lang").forEach(s -> {
+                Stream.of("data", "lang").forEach(s -> {
                     try {
                         fileManager.copy(s, getDataFolder().getPath() + "/" + s + ".yml", "/" + s + ".yml");
                     } catch (Exception e) {
