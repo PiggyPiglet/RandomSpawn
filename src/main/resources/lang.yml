@@ -1,0 +1,7 @@
+commands:
+  incorrect-usage: "&7Incorrect usage, the correct usage of that command is: &c%s %s"
+  no-permission: "&7You do not have permission for that command."
+  help:
+    header: "&7----- &cRandomSpawn Commands &7-----"
+    format: "&c/rs %s %s &8- &7%s"
+    footer: "&7--------------------------------"

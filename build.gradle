@@ -1,0 +1,41 @@
+plugins {
+    id 'java'
+    id 'idea'
+    id 'io.franzbecker.gradle-lombok' version '1.14'
+    id 'com.github.johnrengelman.shadow' version '4.0.2'
+}
+
+group 'me.piggypiglet'
+version '3.0.0'
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+    maven {
+        url = 'https://hub.spigotmc.org/nexus/content/groups/public/'
+    }
+}
+
+dependencies {
+    compileOnly 'org.spigotmc:spigot-api:1.13.2-R0.1-SNAPSHOT'
+    compile 'com.google.inject:guice:+'
+}
+
+lombok {
+    version = '1.18.4'
+    sha256 = ""
+}
+
+import org.apache.tools.ant.filters.ReplaceTokens
+
+processResources {
+    from(sourceSets.main.resources.srcDirs) {
+        filter ReplaceTokens, tokens: [version: version]
+    }
+}
+
+shadowJar {
+    destinationDir = file("$rootDir/spigot/plugins")
+}
+
+compileJava.options.encoding = 'UTF-8'
