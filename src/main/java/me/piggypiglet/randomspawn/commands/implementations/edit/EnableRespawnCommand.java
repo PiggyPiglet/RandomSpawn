@@ -29,7 +29,12 @@ public final class EnableRespawnCommand extends Command {
             Optional<Spawn> opSpawn = spawnManager.getSpawnByName(args[0]);
 
             if (opSpawn.isPresent()) {
-                Spawn spawn = opSpawn.get().toBuilder().respawn(true).build();
+                Spawn spawn = opSpawn.get();
+
+                spawnManager.getSpawns().remove(spawn);
+                spawnManager.getRespawnable().remove(spawn);
+
+                spawn = spawn.toBuilder().respawn(true).build();
 
                 data.editSpawn(spawn);
                 spawnManager.getSpawns().add(spawn);

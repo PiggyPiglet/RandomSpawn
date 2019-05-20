@@ -18,7 +18,7 @@ public final class Data {
 
     public Spawn setSpawn(String name, Location location) {
         if (location.getWorld() != null) {
-            FileConfiguration config = fileManager.getConfig("data");
+            FileConfiguration config = fileManager.getConfig("config");
             Spawn spawn = Spawn.builder()
                     .name(name)
                     .world(location.getWorld().getName())
@@ -58,7 +58,7 @@ public final class Data {
     public void deleteSpawn(Spawn spawn) {
         FileConfiguration config = fileManager.getConfig("config");
 
-        config.set(spawn.getName(), null);
+        config.set("data.locations." + spawn.getName(), null);
     }
 
     public List<Spawn> getAllSpawns() {

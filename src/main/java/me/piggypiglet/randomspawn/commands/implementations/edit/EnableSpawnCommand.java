@@ -29,7 +29,12 @@ public final class EnableSpawnCommand extends Command {
             Optional<Spawn> opSpawn = spawnManager.getSpawnByName(args[0]);
 
             if (opSpawn.isPresent()) {
-                Spawn spawn = opSpawn.get().toBuilder().enabled(true).build();
+                Spawn spawn = opSpawn.get();
+
+                spawnManager.getSpawns().remove(spawn);
+                spawnManager.getEnabled().remove(spawn);
+
+                spawn = spawn.toBuilder().enabled(true).build();
 
                 data.editSpawn(spawn);
                 spawnManager.getSpawns().add(spawn);

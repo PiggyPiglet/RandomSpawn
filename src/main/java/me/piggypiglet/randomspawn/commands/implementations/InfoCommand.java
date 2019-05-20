@@ -43,6 +43,8 @@ public final class InfoCommand extends Command {
             } else {
                 sender.sendMessage(getMessage(UNKNOWN_SPAWN, args[0]));
             }
+
+            return true;
         }
 
         return false;

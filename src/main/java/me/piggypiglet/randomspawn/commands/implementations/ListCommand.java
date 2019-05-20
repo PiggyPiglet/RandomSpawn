@@ -25,7 +25,7 @@ public final class ListCommand extends Command {
     @Override
     protected boolean execute(CommandSender sender, String[] args) {
         sender.sendMessage(getMessage(LIST_FORMAT,
-                spawnManager.getSpawns().stream().map(Spawn::getName).collect(Collectors.joining(" "))));
+                spawnManager.getSpawns().stream().map(Spawn::getName).collect(Collectors.joining(", ")) + "."));
 
         return true;
     }

@@ -29,11 +29,15 @@ public final class DisableSpawnCommand extends Command {
             Optional<Spawn> opSpawn = spawnManager.getSpawnByName(args[0]);
 
             if (opSpawn.isPresent()) {
-                Spawn spawn = opSpawn.get().toBuilder().enabled(false).build();
+                Spawn spawn = opSpawn.get();
+
+                spawnManager.getSpawns().remove(spawn);
+                spawnManager.getEnabled().remove(spawn);
+
+                spawn = spawn.toBuilder().enabled(false).build();
 
                 data.editSpawn(spawn);
                 spawnManager.getSpawns().add(spawn);
-                spawnManager.getEnabled().remove(spawn);
 
                 sender.sendMessage(getMessage(DISABLESPAWN_SUCCESS, args[0]));
             } else {

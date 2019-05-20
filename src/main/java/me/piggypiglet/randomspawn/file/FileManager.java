@@ -1,7 +1,5 @@
 package me.piggypiglet.randomspawn.file;
 
-import com.google.common.collect.ArrayListMultimap;
-import com.google.common.collect.Multimap;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
 import me.piggypiglet.randomspawn.RandomSpawn;
@@ -16,6 +14,11 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 // ------------------------------
 // Copyright (c) PiggyPiglet 2019
@@ -25,7 +28,7 @@ import java.util.ArrayList;
 public final class FileManager {
     @Inject private RandomSpawn randomSpawn;
 
-    private final Multimap<String, Object> configs = ArrayListMultimap.create();
+    private final Map<String, List<Object>> configs = new HashMap<>();
 
     public void copy(String name, String externalPath, String internalPath) throws Exception {
         File file = new File(externalPath);
@@ -44,14 +47,14 @@ public final class FileManager {
 
     public void save(String name) {
         try {
-            getConfig(name).save((File) new ArrayList<>(configs.get(name)).get(0));
+            getConfig(name).save((File) configs.get(name).get(0));
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
     public FileConfiguration getConfig(String name) {
-        return (FileConfiguration) new ArrayList<>(configs.get(name)).get(1);
+        return (FileConfiguration) configs.get(name).get(1);
     }
 
     public void configConvert() {
@@ -88,8 +91,8 @@ public final class FileManager {
         if (file.getPath().endsWith(".yml")) {
             FileConfiguration config = new YamlConfiguration();
             config.load(file);
-            configs.put(name, file);
-            configs.put(name, config);
+            configs.put(name, new ArrayList<>());
+            configs.get(name).addAll(Stream.of(file, config).collect(Collectors.toList()));
         }
     }
 
