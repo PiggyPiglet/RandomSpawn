@@ -15,7 +15,7 @@ public enum Lang {
     PLAYER_ONLY("commands.player-only", "&7That command can only be executed by a player."),
 
     SETSPAWN_ERROR("commands.setspawn.error", "&7An error occurred when trying to set your spawn."),
-    SETSPAWN_SUCCESS("commands.setspawn.success", "&7Successfully set &c%s &7to &c%s, %s, %s, %s, %s, %s&7."),
+    SETSPAWN_SUCCESS("commands.setspawn.success", "&7Successfully set &c%s &7to &c%s, %s, %s, %s, %s&7."),
 
     HELP_HEADER("commands.help.header", "&7----- &cRandomSpawn Commands &7-----"),
     HELP_FORMAT("commands.help.format", "&c/rs %s %s &8- &7%s"),

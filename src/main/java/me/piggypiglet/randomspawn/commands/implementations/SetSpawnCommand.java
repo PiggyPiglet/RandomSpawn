@@ -2,12 +2,10 @@ package me.piggypiglet.randomspawn.commands.implementations;
 
 import com.google.inject.Inject;
 import me.piggypiglet.randomspawn.commands.Command;
-import me.piggypiglet.randomspawn.file.FileManager;
 import me.piggypiglet.randomspawn.file.types.data.Data;
 import me.piggypiglet.randomspawn.file.types.data.Spawn;
-import org.bukkit.World;
+import me.piggypiglet.randomspawn.spawning.SpawnManager;
 import org.bukkit.command.CommandSender;
-import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 
 import static me.piggypiglet.randomspawn.file.types.Lang.*;
@@ -17,6 +15,7 @@ import static me.piggypiglet.randomspawn.file.types.Lang.*;
 // https://www.piggypiglet.me
 // ------------------------------
 public final class SetSpawnCommand extends Command {
+    @Inject private SpawnManager spawnManager;
     @Inject private Data data;
 
     public SetSpawnCommand() {
@@ -31,7 +30,10 @@ public final class SetSpawnCommand extends Command {
             if (spawn == null) {
                 sender.sendMessage(getMessage(SETSPAWN_ERROR));
             } else {
-                sender.sendMessage(getMessage(SETSPAWN_SUCCESS, spawn.getWorld(),
+                spawnManager.getSpawns().add(spawn);
+                spawnManager.getEnabled().add(spawn);
+
+                sender.sendMessage(getMessage(SETSPAWN_SUCCESS, spawn.getName(),
                         Math.round(spawn.getX()),
                         Math.round(spawn.getY()),
                         Math.round(spawn.getZ()),

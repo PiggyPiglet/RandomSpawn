@@ -10,6 +10,7 @@ import lombok.Data;
 @Builder @Data
 public final class Spawn {
     private String name;
+    private boolean enabled;
     private String world;
     private double x;
     private double y;

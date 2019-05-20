@@ -5,11 +5,16 @@ import com.google.inject.Injector;
 import me.piggypiglet.randomspawn.commands.CommandManager;
 import me.piggypiglet.randomspawn.commands.Commands;
 import me.piggypiglet.randomspawn.file.FileManager;
+import me.piggypiglet.randomspawn.file.types.data.Data;
+import me.piggypiglet.randomspawn.file.types.data.Spawn;
 import me.piggypiglet.randomspawn.guice.BinderModule;
+import me.piggypiglet.randomspawn.spawning.SpawnManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import static me.piggypiglet.randomspawn.RandomSpawn.Registerables.*;
@@ -21,12 +26,15 @@ import static me.piggypiglet.randomspawn.RandomSpawn.Registerables.*;
 public final class RandomSpawn extends JavaPlugin {
     @Inject private FileManager fileManager;
     @Inject private CommandManager commandManager;
+    @Inject private SpawnManager spawnManager;
+
+    @Inject private Data data;
 
     private Injector injector;
 
     @Override
     public void onEnable() {
-        Stream.of(GUICE, FILES, COMMANDS).forEach(this::register);
+        Stream.of(GUICE, FILES, SPAWNS, COMMANDS, EVENTS).forEach(this::register);
     }
 
     @Override
@@ -51,15 +59,31 @@ public final class RandomSpawn extends JavaPlugin {
                 });
                 break;
 
+            case SPAWNS:
+                spawnManager.getSpawns().clear();
+                spawnManager.getEnabled().clear();
+
+                List<Spawn> spawns = data.getAllSpawns();
+
+                if (spawns != null) {
+                    spawnManager.getSpawns().addAll(spawns);
+                    spawnManager.getEnabled().addAll(spawns.stream().filter(Spawn::isEnabled).collect(Collectors.toList()));
+                }
+                break;
+
             case COMMANDS:
                 Objects.requireNonNull(getCommand("randomspawn"))
                         .setExecutor(commandManager);
                 Arrays.stream(Commands.values()).map(Commands::getClazz).map(injector::getInstance).forEach(commandManager.getCommands()::add);
                 break;
+
+            case EVENTS:
+                getServer().getPluginManager().registerEvents(spawnManager, this);
+                break;
         }
     }
 
     enum Registerables {
-        GUICE, FILES, COMMANDS
+        GUICE, FILES, COMMANDS, SPAWNS, EVENTS
     }
 }
