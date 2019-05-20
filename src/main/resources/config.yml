@@ -1,0 +1,5 @@
+# Warning! /rs reload will not reload this file, and will overwrite any manual changes.
+config-version: 1
+
+settings:
+  first-join-only: false

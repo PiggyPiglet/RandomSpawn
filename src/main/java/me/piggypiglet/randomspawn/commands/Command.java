@@ -14,8 +14,8 @@ public abstract class Command {
     @Getter private final boolean playerOnly;
     @Getter private final String[] permissions;
 
-    protected Command(final String command, final String decription, final String usage, String... permissions) {
-        this(command, decription, usage, false, permissions);
+    protected Command(final String command, final String description, final String usage, String... permissions) {
+        this(command, description, usage, false, permissions);
     }
 
     protected Command(final String command, final String description, final String usage, final boolean playerOnly, String... permissions) {

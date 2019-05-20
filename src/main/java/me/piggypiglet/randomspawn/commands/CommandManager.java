@@ -24,7 +24,6 @@ public final class CommandManager implements CommandExecutor {
 
     @Getter private final List<Command> commands = new ArrayList<>();
 
-    @SuppressWarnings("NullableProblems")
     @Override
     public boolean onCommand(CommandSender sender, org.bukkit.command.Command bCommand, String label, String[] badArgs) {
         if (badArgs.length > 0) {

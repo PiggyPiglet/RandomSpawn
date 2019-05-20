@@ -37,7 +37,7 @@ public final class HelpCommand extends Command {
             if (command.isPresent()) {
                 Command c = command.get();
 
-                sender.sendMessage("/papi " + c.getCommand() + " " + c.getUsage() + " - " + c.getDescription());
+                sender.sendMessage(getMessage(HELP_SPECIFIC, c.getCommand(), c.getUsage(), c.getDescription()));
             } else {
                 return false;
             }

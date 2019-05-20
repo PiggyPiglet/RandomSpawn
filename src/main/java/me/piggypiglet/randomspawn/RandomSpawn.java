@@ -5,6 +5,7 @@ import com.google.inject.Injector;
 import me.piggypiglet.randomspawn.commands.CommandManager;
 import me.piggypiglet.randomspawn.commands.Commands;
 import me.piggypiglet.randomspawn.file.FileManager;
+import me.piggypiglet.randomspawn.file.types.Lang;
 import me.piggypiglet.randomspawn.file.types.data.Data;
 import me.piggypiglet.randomspawn.file.types.data.Spawn;
 import me.piggypiglet.randomspawn.guice.BinderModule;
@@ -39,10 +40,10 @@ public final class RandomSpawn extends JavaPlugin {
 
     @Override
     public void onDisable() {
-
+        fileManager.save("config");
     }
 
-    private void register(Registerables registerable) {
+    public void register(Registerables registerable) {
         switch (registerable) {
             case GUICE:
                 injector = new BinderModule(this).createInjector();
@@ -50,25 +51,33 @@ public final class RandomSpawn extends JavaPlugin {
                 break;
 
             case FILES:
-                Stream.of("data", "lang").forEach(s -> {
+                fileManager.clear();
+
+                Stream.of("config", "lang").forEach(s -> {
                     try {
                         fileManager.copy(s, getDataFolder().getPath() + "/" + s + ".yml", "/" + s + ".yml");
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
                 });
+
+                fileManager.configConvert();
                 break;
 
             case SPAWNS:
                 spawnManager.getSpawns().clear();
                 spawnManager.getEnabled().clear();
+                spawnManager.getRespawnable().clear();
 
                 List<Spawn> spawns = data.getAllSpawns();
 
                 if (spawns != null) {
                     spawnManager.getSpawns().addAll(spawns);
                     spawnManager.getEnabled().addAll(spawns.stream().filter(Spawn::isEnabled).collect(Collectors.toList()));
+                    spawnManager.getRespawnable().addAll(spawnManager.getEnabled().stream().filter(Spawn::isRespawn).collect(Collectors.toList()));
                 }
+
+                getLogger().info(Lang.getMessage(Lang.FOUND_SPAWNS, spawnManager.getSpawns().size(), spawnManager.getEnabled().size()));
                 break;
 
             case COMMANDS:
@@ -83,7 +92,7 @@ public final class RandomSpawn extends JavaPlugin {
         }
     }
 
-    enum Registerables {
+    public enum Registerables {
         GUICE, FILES, COMMANDS, SPAWNS, EVENTS
     }
 }

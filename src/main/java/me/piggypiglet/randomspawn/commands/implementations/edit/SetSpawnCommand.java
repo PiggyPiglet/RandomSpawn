@@ -1,4 +1,4 @@
-package me.piggypiglet.randomspawn.commands.implementations;
+package me.piggypiglet.randomspawn.commands.implementations.edit;
 
 import com.google.inject.Inject;
 import me.piggypiglet.randomspawn.commands.Command;
@@ -19,7 +19,7 @@ public final class SetSpawnCommand extends Command {
     @Inject private Data data;
 
     public SetSpawnCommand() {
-        super("setspawn", "Set a spawn.", "[location name]", true, "randomspawn.admin", "randomspawn.setspawn");
+        super("setspawn", "Set a spawn.", "<location name>", true, "randomspawn.admin", "randomspawn.setspawn");
     }
 
     @Override

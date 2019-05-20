@@ -3,6 +3,7 @@ description: Plugin to spawn a player at a randomly chosen defined location.
 author: PiggyPiglet
 main: me.piggypiglet.randomspawn.RandomSpawn
 version: @version@
+prefix: "RS"
 commands:
   randomspawn:
     aliases: [rs]
