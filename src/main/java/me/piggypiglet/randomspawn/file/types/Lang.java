@@ -35,7 +35,7 @@ public enum Lang {
 
     HELP_HEADER("commands.help.header", "&7----- &cRandomSpawn Commands &7-----"),
     HELP_FORMAT("commands.help.format", "&c/rs %s %s &8- &7%s"),
-    HELP_FOOTER("commands.help.footer", "&7--------------------------------"),
+    HELP_FOOTER("commands.help.footer", "&7-------------------------------"),
     HELP_SPECIFIC("commands.help.specific", "&c/rs %s &s &8- &7%s");
 
     private final String path;

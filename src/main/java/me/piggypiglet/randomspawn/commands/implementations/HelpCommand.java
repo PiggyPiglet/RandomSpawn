@@ -5,6 +5,7 @@ import me.piggypiglet.randomspawn.commands.Command;
 import me.piggypiglet.randomspawn.commands.CommandManager;
 import org.bukkit.command.CommandSender;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
@@ -18,7 +19,7 @@ public final class HelpCommand extends Command {
     @Inject private CommandManager commandManager;
 
     public HelpCommand() {
-        super("help", "this menu.", "[command]", "placeholderapi.default", "placeholderapi.command.help");
+        super("help", "this menu.", "[command]", "randomspawn.default", "randomspawn.help");
     }
 
     @Override
@@ -28,7 +29,9 @@ public final class HelpCommand extends Command {
         if (args.length == 0) {
             StringBuilder builder = new StringBuilder(getMessage(HELP_HEADER) + "\n");
 
-            commands.forEach(c -> builder.append(getMessage(HELP_FORMAT, c.getCommand(), c.getUsage(), c.getDescription())).append("\n"));
+            commands.stream()
+                    .filter(c -> Arrays.stream(c.getPermissions()).anyMatch(sender::hasPermission))
+                    .forEach(c -> builder.append(getMessage(HELP_FORMAT, c.getCommand(), c.getUsage(), c.getDescription())).append("\n"));
             builder.append(getMessage(HELP_FOOTER));
             sender.sendMessage(builder.toString());
         } else {
