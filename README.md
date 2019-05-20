@@ -27,7 +27,7 @@ randomspawn.list - /rs list<br/>
 randomspawn.info - /rs info \<location name><br/>
 randomspawn.reload - /rs reload<br/><br/>
 
-![Support](https://i.imgur.com/bGoM4S3.png)
+![Support](https://i.imgur.com/bGoM4S3.png)<br/>
 For support, suggestions or bug reports, please join my [discord](https://piggypiglet.me/discord) or tag me in the discussion. Reviews are not the place to ask for support.<br/><br/>
 
 ###### Here's the jenkins if for some unknown reason, you want to download from it: https://ci.piggypiglet.me/job/RandomSpawn/
