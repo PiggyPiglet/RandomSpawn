@@ -1,4 +1,5 @@
 spawns: "Found %s total spawns and %s enabled spawns."
+migrating-configs: "%s is outdated! Converting to the latest version.\nConversion will most likely change the order of things inside the file,\nbut this won't change any of your settings/data."
 commands:
   incorrect-usage: "&7Incorrect usage, the correct usage of that command is: &c%s %s"
   no-permission: "&7You do not have permission for that command."
@@ -31,3 +32,5 @@ commands:
     format: "&c/rs %s %s &8- &7%s"
     footer: "&7-------------------------------"
     specific: "&c/rs %s &s &8- &7%s"
+  spawn:
+    success: "&7Successfully teleported to a random spawn."

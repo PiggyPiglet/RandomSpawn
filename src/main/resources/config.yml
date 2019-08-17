@@ -1,5 +1,8 @@
 # Warning! /rs reload will not reload this file, and will overwrite any manual changes.
-config-version: 1
+# safe-locations-in-memory allows you to control ram usage by only storing specific amounts of locations. This option only affects square and radius spawns. If ram usage is too high, you may want to lower this value.
+config-version: 2
 
 settings:
+  never-on-join: false
   first-join-only: false
+  safe-locations-in-memory: 10

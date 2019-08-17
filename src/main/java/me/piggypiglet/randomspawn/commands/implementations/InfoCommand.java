@@ -2,8 +2,11 @@ package me.piggypiglet.randomspawn.commands.implementations;
 
 import com.google.inject.Inject;
 import me.piggypiglet.randomspawn.commands.Command;
-import me.piggypiglet.randomspawn.file.types.data.Spawn;
+import me.piggypiglet.randomspawn.spawns.Spawn;
 import me.piggypiglet.randomspawn.spawning.SpawnManager;
+import me.piggypiglet.randomspawn.spawns.Spawns;
+import me.piggypiglet.randomspawn.utils.SpawnUtils;
+import org.apache.commons.lang.StringUtils;
 import org.bukkit.command.CommandSender;
 
 import java.util.Optional;
@@ -24,7 +27,7 @@ public final class InfoCommand extends Command {
     @Override
     protected boolean execute(CommandSender sender, String[] args) {
         if (args.length > 0) {
-            Optional<Spawn> opSpawn = spawnManager.getSpawnByName(args[0]);
+            Optional<Spawn> opSpawn = SpawnUtils.getSpawnByName(args[0]);
 
             if (opSpawn.isPresent()) {
                 Spawn spawn = opSpawn.get();
@@ -32,11 +35,7 @@ public final class InfoCommand extends Command {
                 sender.sendMessage(getMessage(INFO_FORMAT,
                         spawn.getName(),
                         spawn.getWorld(),
-                        spawn.getX(),
-                        spawn.getY(),
-                        spawn.getZ(),
-                        spawn.getYaw(),
-                        spawn.getPitch(),
+                        StringUtils.capitalize(Spawns.getTypeFromSpawn(spawn).toString()),
                         spawn.isEnabled(),
                         spawn.isRespawn()
                 ));

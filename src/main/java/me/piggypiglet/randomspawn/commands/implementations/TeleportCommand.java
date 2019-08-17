@@ -2,8 +2,9 @@ package me.piggypiglet.randomspawn.commands.implementations;
 
 import com.google.inject.Inject;
 import me.piggypiglet.randomspawn.commands.Command;
-import me.piggypiglet.randomspawn.file.types.data.Spawn;
+import me.piggypiglet.randomspawn.spawns.Spawn;
 import me.piggypiglet.randomspawn.spawning.SpawnManager;
+import me.piggypiglet.randomspawn.utils.SpawnUtils;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
@@ -25,10 +26,10 @@ public final class TeleportCommand extends Command {
     @Override
     protected boolean execute(CommandSender sender, String[] args) {
         if (args.length > 0) {
-            Optional<Spawn> opSpawn = spawnManager.getSpawnByName(args[0]);
+            Optional<Spawn> opSpawn = SpawnUtils.getSpawnByName(args[0]);
 
             if (opSpawn.isPresent()) {
-                spawnManager.teleportPlayerToSpawn((Player) sender, opSpawn.get());
+//                SpawnUtils.teleportPlayerToSpawn(opSpawn.get(), (Player) sender);
                 sender.sendMessage(getMessage(TELEPORT_SUCCESS, args[0]));
             } else {
                 sender.sendMessage(getMessage(UNKNOWN_SPAWN, args[0]));

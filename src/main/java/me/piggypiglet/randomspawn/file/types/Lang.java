@@ -10,6 +10,7 @@ import org.bukkit.ChatColor;
 // ------------------------------
 public enum Lang {
     FOUND_SPAWNS("spawns", "Found %s total spawns and %s enabled spawns."),
+    MIGRATING_CONFIGS("migrating-configs", "%s is outdated! Converting to the latest version.\nConversion will most likely change the order of things inside the file,\nbut this won't change any of your settings/data."),
 
     INCORRECT_USAGE("commands.incorrect-usage", "&7Incorrect usage, the correct usage of that command is: &c%s %s"),
     NO_PERMISSION("commands.no-permission", "&7You do not have permission for that command."),
@@ -18,7 +19,7 @@ public enum Lang {
     UNKNOWN_SPAWN("commands.unknown-spawn", "&7Unknown spawn: &c%s&7."),
 
     SETSPAWN_ERROR("commands.setspawn.error", "&7An error occurred when trying to set your spawn."),
-    SETSPAWN_SUCCESS("commands.setspawn.success", "&7Successfully set &c%s &7to &c%s, %s, %s, %s, %s&7."),
+    SETSPAWN_SUCCESS("commands.setspawn.success", "&7Successfully set &c%s as a &c%s &7spawn."),
     ENABLESPAWN_SUCCESS("commands.enablespawn.success", "&7Successfully enabled &c%s&7."),
     DISABLESPAWN_SUCCESS("commands.disablespawn.success", "&7Successfully disabled &c%s&7."),
     ENABLERESPAWN_SUCCESS("commands.enablerespawn.success", "&7Successfully enabled respawning on &c%s&7."),
@@ -29,9 +30,11 @@ public enum Lang {
 
     LIST_FORMAT("commands.list.format", "&7%s"),
 
-    INFO_FORMAT("commands.info.format", "&7Info for &c%s&7:\n&7World: &c%s\n&7X: &c%s\n&7Y: &c%s\n&7Z: &c%s\n&7Yaw: &c%s\n&7Pitch: &c%s\n&7Enabled: &c%s\n&7Respawnable: &c%s"),
+    INFO_FORMAT("commands.info.format", "&7Info for &c%s&7:\n&7World: &c%s\n&7Type: &c%s\n&7Enabled: &c%s\n&7Respawnable: &c%s"),
 
     RELOAD_SUCCESS("commands.reload.success", "&7Successfully reloaded the lang file."),
+
+    SPAWN_SUCCESS("commands.spawn.success", "&7Successfully teleported to a random spawn."),
 
     HELP_HEADER("commands.help.header", "&7----- &cRandomSpawn Commands &7-----"),
     HELP_FORMAT("commands.help.format", "&c/rs %s %s &8- &7%s"),

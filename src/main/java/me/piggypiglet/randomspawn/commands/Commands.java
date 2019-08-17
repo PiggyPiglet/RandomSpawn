@@ -20,7 +20,9 @@ public enum Commands {
     INFO(InfoCommand.class),
     LIST(ListCommand.class),
     TELEPORT(TeleportCommand.class),
-    RELOAD(ReloadCommand.class);
+    RELOAD(ReloadCommand.class),
+
+    TEST(TestCommand.class);
 
     @Getter private final Class<? extends Command> clazz;
 

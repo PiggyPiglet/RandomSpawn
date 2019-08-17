@@ -2,7 +2,7 @@ package me.piggypiglet.randomspawn.commands.implementations;
 
 import com.google.inject.Inject;
 import me.piggypiglet.randomspawn.commands.Command;
-import me.piggypiglet.randomspawn.file.types.data.Spawn;
+import me.piggypiglet.randomspawn.spawns.Spawn;
 import me.piggypiglet.randomspawn.spawning.SpawnManager;
 import org.bukkit.command.CommandSender;
 

@@ -2,9 +2,10 @@ package me.piggypiglet.randomspawn.commands.implementations.edit;
 
 import com.google.inject.Inject;
 import me.piggypiglet.randomspawn.commands.Command;
-import me.piggypiglet.randomspawn.file.types.data.Data;
-import me.piggypiglet.randomspawn.file.types.data.Spawn;
+import me.piggypiglet.randomspawn.file.types.Data;
+import me.piggypiglet.randomspawn.spawns.Spawn;
 import me.piggypiglet.randomspawn.spawning.SpawnManager;
+import me.piggypiglet.randomspawn.utils.SpawnUtils;
 import org.bukkit.command.CommandSender;
 
 import java.util.Optional;
@@ -26,7 +27,7 @@ public final class DeleteSpawnCommand extends Command {
     @Override
     protected boolean execute(CommandSender sender, String[] args) {
         if (args.length > 0) {
-            Optional<Spawn> opSpawn = spawnManager.getSpawnByName(args[0]);
+            Optional<Spawn> opSpawn = SpawnUtils.getSpawnByName(args[0]);
 
             if (opSpawn.isPresent()) {
                 Spawn spawn = opSpawn.get();

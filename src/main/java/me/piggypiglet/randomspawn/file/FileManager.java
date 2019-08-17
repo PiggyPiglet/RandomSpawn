@@ -3,6 +3,7 @@ package me.piggypiglet.randomspawn.file;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
 import me.piggypiglet.randomspawn.RandomSpawn;
+import me.piggypiglet.randomspawn.file.migration.Migrator;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
@@ -57,34 +58,13 @@ public final class FileManager {
         return (FileConfiguration) configs.get(name).get(1);
     }
 
-    public void configConvert() {
-        FileConfiguration config = getConfig("config");
-
-        if (!config.contains("config-version")) {
-            randomSpawn.getLogger().info("Found outdated config! Converting to the latest version.\nPhysical changes to the file will occur next restart, but the plugin will work fine till then.\nConversion will most likely change the order of things inside the file,\nbut this won't change any of your settings/data.");
-
-            config.set("config-version", 1);
-            config.set("settings", null);
-            config.set("settings.first-join-only", false);
-
-            ConfigurationSection section = config.getConfigurationSection("data.locations");
-
-            if (section != null) {
-                section.getKeys(false).forEach(k -> {
-                    String disabled = k + ".disabled";
-
-                    if (section.contains(disabled)) {
-                        boolean value = section.getBoolean(disabled);
-                        section.set(disabled, null);
-                        section.set(k + ".enabled", !value);
-                    }
-                });
-            }
-        }
-    }
-
     public void clear() {
         configs.clear();
+    }
+
+    void set(String name, FileConfiguration config) {
+        configs.get(name).remove(1);
+        configs.get(name).add(config);
     }
 
     private void load(String name, File file) throws Exception {
