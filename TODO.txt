@@ -1,0 +1,15 @@
+https://www.spigotmc.org/threads/best-plugin-for-random-teleport-functionality.398491/
+
+I've used a ton of RTP plugins over the years and none of them seem to be perfect, they all have their own issues or lack of features. The main issue are RTP plugins that place players in caves (because they detect it as a valid air space) or plugins that put players in undesirable locations such as in water, lava, top of trees, etc.
+
+I'm seeking an RTP plugin (that is free, of course) that has the following behaviors / functionality:
+- Blacklist of blocks that a player cannot be placed on
+- Blacklist of biomes that a player cannot be placed in
+- Properly sets the player at a safe location, ABOVE ground
+- Supports dimensions such as The Nether and The End
+- Avoids placing players near claims (WG & GP)
+- Avoids placing players outside a vanilla worldborder
+- Uses good random math for determining the location (doesn't "favor" certain locations)
+- Optimized / Performant - calculations should be async where possible
+
+If I had the time, I'd make one myself, but with the functionality I want, it'd take quite some time - so i'd rather seek an existing solution.
