@@ -58,4 +58,8 @@ public final class Factions {
     public void setOwn(boolean own) {
         this.own = own;
     }
+
+    public Factions dupe() {
+        return new Factions(safezone, warzone, wilderness, enemy, own);
+    }
 }

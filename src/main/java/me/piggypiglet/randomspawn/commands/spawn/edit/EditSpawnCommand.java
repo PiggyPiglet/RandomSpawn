@@ -53,8 +53,8 @@ public final class EditSpawnCommand extends BukkitCommand {
             }
 
             final Spawn spawn = spawnManager.get(name);
-            pendingSpawnManager.add(new PendingSpawn(uuid, spawn));
-            user.sendMessage(Lang.EDIT_ENABLED, spawn.getType().toString().toLowerCase());
+            pendingSpawnManager.add(new PendingSpawn(uuid, spawn.dupe()));
+            user.sendMessage(Lang.EDIT_ENABLED);
             return true;
         }
 

@@ -1,6 +1,5 @@
 package me.piggypiglet.randomspawn.data.options.types.hook;
 
-import me.piggypiglet.randomspawn.data.options.types.list.List;
 import me.piggypiglet.randomspawn.data.options.types.list.Lists;
 
 // ------------------------------
@@ -8,13 +7,13 @@ import me.piggypiglet.randomspawn.data.options.types.list.Lists;
 // https://www.piggypiglet.me
 // ------------------------------
 public final class Hooks {
-    private final List hooks;
-    private final int distanceFromClaim;
-    private final Lists worldGuard;
-    private final Factions factions;
-    private final GriefPrevention griefPrevention;
+    private HookList hooks;
+    private int distanceFromClaim;
+    private Lists worldGuard;
+    private Factions factions;
+    private GriefPrevention griefPrevention;
 
-    public Hooks(List hooks, int distanceFromClaim, Lists worldGuard, Factions factions, GriefPrevention griefPrevention) {
+    public Hooks(HookList hooks, int distanceFromClaim, Lists worldGuard, Factions factions, GriefPrevention griefPrevention) {
         this.hooks = hooks;
         this.distanceFromClaim = distanceFromClaim;
         this.worldGuard = worldGuard;
@@ -22,23 +21,47 @@ public final class Hooks {
         this.griefPrevention = griefPrevention;
     }
 
-    public List getHooks() {
+    public HookList getHooks() {
         return hooks;
+    }
+
+    public void setHooks(HookList hooks) {
+        this.hooks = hooks;
     }
 
     public int getDistanceFromClaim() {
         return distanceFromClaim;
     }
 
+    public void setDistanceFromClaim(int distanceFromClaim) {
+        this.distanceFromClaim = distanceFromClaim;
+    }
+
     public Lists getWorldGuard() {
         return worldGuard;
+    }
+
+    public void setWorldGuard(Lists worldGuard) {
+        this.worldGuard = worldGuard;
     }
 
     public Factions getFactions() {
         return factions;
     }
 
+    public void setFactions(Factions factions) {
+        this.factions = factions;
+    }
+
     public GriefPrevention getGriefPrevention() {
         return griefPrevention;
+    }
+
+    public void setGriefPrevention(GriefPrevention griefPrevention) {
+        this.griefPrevention = griefPrevention;
+    }
+
+    public Hooks dupe() {
+        return new Hooks(hooks.dupe(), distanceFromClaim, worldGuard.dupe(), factions.dupe(), griefPrevention.dupe());
     }
 }

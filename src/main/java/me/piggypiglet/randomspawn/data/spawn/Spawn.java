@@ -66,4 +66,10 @@ public abstract class Spawn implements SearchUtils.Searchable {
     public void setOptions(Options options) {
         this.options = options;
     }
+
+    protected abstract Spawn copy();
+
+    public Spawn dupe() {
+        return copy();
+    }
 }

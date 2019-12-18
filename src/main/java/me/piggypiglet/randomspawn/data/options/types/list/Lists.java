@@ -29,7 +29,7 @@ public final class Lists {
         this.blacklist = blacklist;
     }
 
-//    public Lists dupe() {
-//        return new Lists(whitelist.clone(), blacklist.clone());
-//    }
+    public Lists dupe() {
+        return new Lists(whitelist.dupe(), blacklist.dupe());
+    }
 }

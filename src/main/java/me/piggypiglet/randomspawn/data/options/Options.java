@@ -72,8 +72,7 @@ public final class Options implements Cloneable {
         this.safeLocation = safeLocation;
     }
 
-//    @Override
-//    public Object clone() {
-//        Options clone = new Options(blocks.clone());
-//    }
+    public Options dupe() {
+        return new Options(blocks.dupe(), biomes.dupe(), worlds.dupe(), hooks.dupe(), respawn, safeLocation);
+    }
 }

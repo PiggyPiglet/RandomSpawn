@@ -3,9 +3,7 @@ package me.piggypiglet.randomspawn.mappers.options;
 import me.piggypiglet.framework.mapper.ObjectMapper;
 import me.piggypiglet.framework.utils.map.Maps;
 import me.piggypiglet.randomspawn.data.options.Options;
-import me.piggypiglet.randomspawn.data.options.types.hook.Factions;
-import me.piggypiglet.randomspawn.data.options.types.hook.GriefPrevention;
-import me.piggypiglet.randomspawn.data.options.types.hook.Hooks;
+import me.piggypiglet.randomspawn.data.options.types.hook.*;
 import me.piggypiglet.randomspawn.data.options.types.list.List;
 import me.piggypiglet.randomspawn.data.options.types.list.Lists;
 import me.piggypiglet.randomspawn.mappers.options.hooks.HooksMapper;
@@ -43,8 +41,8 @@ public final class OptionsMapper implements ObjectMapper<Map<String, Object>, Op
                     )
             ),
             new Hooks(
-                    new List(
-                            false, new HashSet<>(Arrays.asList("worldguard", "worldborder", "factions", "griefprevention"))
+                    new HookList(
+                            false, new HashSet<>(Arrays.asList(HookTypes.values()))
                     ),
                     50,
                     new Lists(

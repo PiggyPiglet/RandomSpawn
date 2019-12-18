@@ -38,4 +38,8 @@ public final class GriefPrevention {
     public void setWilderness(boolean wilderness) {
         this.wilderness = wilderness;
     }
+
+    public GriefPrevention dupe() {
+        return new GriefPrevention(own, other, wilderness);
+    }
 }

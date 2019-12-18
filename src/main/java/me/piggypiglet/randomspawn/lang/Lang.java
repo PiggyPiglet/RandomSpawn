@@ -21,6 +21,14 @@ public enum Lang implements LangEnum {
     UNKNOWN_SPAWN("commands.edit.unknown"),
     NO_SPAWNS("commands.edit.no_spawns"),
     EDIT_ENABLED("commands.edit.enabled"),
+    TOGGLED_HOOKS("commands.edit.toggle.hook"),
+    DISTANCE_SUCCESS("commands.edit.dfc.success"),
+    TOGGLED_LIST("commands.edit.toggle.list"),
+    LIST_MODIFICATION("commands.edit.toggle.list_mod.value"),
+    LIST_MODIFICATION_ADDED("commands.edit.toggle.list_mod.added"),
+    LIST_MODIFICATION_REMOVED("commands.edit.toggle.list_mod.removed"),
+    HOOK_UPDATE("commands.edit.toggle.update"),
+    EDIT_SUCCESS("commands.edit.success"),
 
     CANCEL_SUCCESS("commands.cancel.success")
     ;

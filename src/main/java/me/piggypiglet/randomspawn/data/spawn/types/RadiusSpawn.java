@@ -33,4 +33,9 @@ public final class RadiusSpawn extends Spawn {
     public void setRadius(int radius) {
         this.radius = radius;
     }
+
+    @Override
+    protected Spawn copy() {
+        return new RadiusSpawn(getName(), getType(), getPermission(), isEnabled(), getWorld(), getOptions().dupe(), center, radius);
+    }
 }

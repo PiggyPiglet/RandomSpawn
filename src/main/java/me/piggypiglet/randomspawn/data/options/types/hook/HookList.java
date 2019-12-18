@@ -1,4 +1,4 @@
-package me.piggypiglet.randomspawn.data.options.types.list;
+package me.piggypiglet.randomspawn.data.options.types.hook;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -7,11 +7,11 @@ import java.util.Set;
 // Copyright (c) PiggyPiglet 2019
 // https://www.piggypiglet.me
 // ------------------------------
-public final class List {
+public final class HookList {
     private boolean enabled;
-    private Set<String> values;
+    private Set<HookTypes> values;
 
-    public List(boolean enabled, Set<String> values) {
+    public HookList(boolean enabled, Set<HookTypes> values) {
         this.enabled = enabled;
         this.values = values;
     }
@@ -24,15 +24,15 @@ public final class List {
         this.enabled = enabled;
     }
 
-    public Set<String> getValues() {
+    public Set<HookTypes> getValues() {
         return values;
     }
 
-    public void setValues(Set<String> values) {
+    public void setValues(Set<HookTypes> values) {
         this.values = values;
     }
 
-    public List dupe() {
-        return new List(enabled, new HashSet<>(values));
+    public HookList dupe() {
+        return new HookList(enabled, new HashSet<>(values));
     }
 }
