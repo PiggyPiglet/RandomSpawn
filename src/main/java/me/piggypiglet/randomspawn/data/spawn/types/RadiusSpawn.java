@@ -22,7 +22,15 @@ public final class RadiusSpawn extends Spawn {
         return center;
     }
 
+    public void setCenter(double[] center) {
+        this.center = center;
+    }
+
     public int getRadius() {
         return radius;
+    }
+
+    public void setRadius(int radius) {
+        this.radius = radius;
     }
 }

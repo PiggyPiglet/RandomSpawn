@@ -5,8 +5,8 @@ package me.piggypiglet.randomspawn.data.options.types.list;
 // https://www.piggypiglet.me
 // ------------------------------
 public final class Lists {
-    private final List whitelist;
-    private final List blacklist;
+    private List whitelist;
+    private List blacklist;
 
     public Lists(List whitelist, List blacklist) {
         this.whitelist = whitelist;
@@ -17,7 +17,19 @@ public final class Lists {
         return whitelist;
     }
 
+    public void setWhitelist(List whitelist) {
+        this.whitelist = whitelist;
+    }
+
     public List getBlacklist() {
         return blacklist;
+    }
+
+    public void setBlacklist(List blacklist) {
+        this.blacklist = blacklist;
+    }
+
+    public Lists dupe() {
+        return new Lists(whitelist.clone(), blacklist.clone());
     }
 }

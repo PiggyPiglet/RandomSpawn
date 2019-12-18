@@ -16,9 +16,14 @@ public final class SetSpawn extends Spawn {
 
     public SetSpawn(String name, Spawns type, String permission, boolean enabled, World world, Options options, Set<Location> locations) {
         super(name, type, permission, enabled, world, options);
+        this.locations = locations;
     }
 
     public Set<Location> getLocations() {
         return locations;
+    }
+
+    public void setLocations(Set<Location> locations) {
+        this.locations = locations;
     }
 }

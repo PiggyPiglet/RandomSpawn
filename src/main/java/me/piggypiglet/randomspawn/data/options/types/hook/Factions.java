@@ -5,11 +5,11 @@ package me.piggypiglet.randomspawn.data.options.types.hook;
 // https://www.piggypiglet.me
 // ------------------------------
 public final class Factions {
-    private final boolean safezone;
-    private final boolean warzone;
-    private final boolean wilderness;
-    private final boolean enemy;
-    private final boolean own;
+    private boolean safezone;
+    private boolean warzone;
+    private boolean wilderness;
+    private boolean enemy;
+    private boolean own;
 
     public Factions(boolean safezone, boolean warzone, boolean wilderness, boolean enemy, boolean own) {
         this.safezone = safezone;
@@ -23,19 +23,39 @@ public final class Factions {
         return safezone;
     }
 
+    public void setSafezone(boolean safezone) {
+        this.safezone = safezone;
+    }
+
     public boolean isWarzone() {
         return warzone;
+    }
+
+    public void setWarzone(boolean warzone) {
+        this.warzone = warzone;
     }
 
     public boolean isWilderness() {
         return wilderness;
     }
 
+    public void setWilderness(boolean wilderness) {
+        this.wilderness = wilderness;
+    }
+
     public boolean isEnemy() {
         return enemy;
     }
 
+    public void setEnemy(boolean enemy) {
+        this.enemy = enemy;
+    }
+
     public boolean isOwn() {
         return own;
+    }
+
+    public void setOwn(boolean own) {
+        this.own = own;
     }
 }

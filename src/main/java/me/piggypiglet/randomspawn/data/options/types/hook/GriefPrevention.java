@@ -5,9 +5,9 @@ package me.piggypiglet.randomspawn.data.options.types.hook;
 // https://www.piggypiglet.me
 // ------------------------------
 public final class GriefPrevention {
-    private final boolean own;
-    private final boolean other;
-    private final boolean wilderness;
+    private boolean own;
+    private boolean other;
+    private boolean wilderness;
 
     public GriefPrevention(boolean own, boolean other, boolean wilderness) {
         this.own = own;
@@ -19,11 +19,23 @@ public final class GriefPrevention {
         return own;
     }
 
+    public void setOwn(boolean own) {
+        this.own = own;
+    }
+
     public boolean isOther() {
         return other;
     }
 
+    public void setOther(boolean other) {
+        this.other = other;
+    }
+
     public boolean isWilderness() {
         return wilderness;
+    }
+
+    public void setWilderness(boolean wilderness) {
+        this.wilderness = wilderness;
     }
 }

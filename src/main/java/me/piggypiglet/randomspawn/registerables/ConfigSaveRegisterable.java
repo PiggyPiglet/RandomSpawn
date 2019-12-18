@@ -4,25 +4,25 @@ import com.google.inject.Inject;
 import me.piggypiglet.framework.file.framework.FileConfiguration;
 import me.piggypiglet.framework.file.framework.MutableFileConfiguration;
 import me.piggypiglet.framework.registerables.StartupRegisterable;
+import me.piggypiglet.framework.task.Task;
 import me.piggypiglet.randomspawn.data.Data;
-import me.piggypiglet.randomspawn.mappers.ConfigMapper;
 
 // ------------------------------
 // Copyright (c) PiggyPiglet 2019
 // https://www.piggypiglet.me
 // ------------------------------
-public final class ConfigMapperRegisterable extends StartupRegisterable {
-    private final ConfigMapper configMapper;
-    private final MutableFileConfiguration config;
-
-    @Inject
-    public ConfigMapperRegisterable(@Data FileConfiguration config) {
-        configMapper = new ConfigMapper((MutableFileConfiguration) config);
-        this.config = (MutableFileConfiguration) config;
-    }
+public final class ConfigSaveRegisterable extends StartupRegisterable {
+    @Inject private Task task;
+    @Inject @Data private FileConfiguration config;
 
     @Override
     protected void execute() {
-        addBinding(configMapper.dataToType(config));
+        task.async(r -> {
+            try {
+                ((MutableFileConfiguration) config).save();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }, "10 mins", true);
     }
 }
