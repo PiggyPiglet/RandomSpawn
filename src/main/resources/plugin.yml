@@ -1,5 +1,5 @@
 name: RandomSpawn
-description: Plugin to spawn a player at a randomly chosen defined location.
+description: Plugin to spawn a player at a randomly chosen, defined location on login & respawn.
 author: PiggyPiglet
 main: me.piggypiglet.randomspawn.RandomSpawn
 version: @version@
@@ -8,50 +8,7 @@ api-version: "1.13"
 website: https://piggypiglet.me
 
 commands:
-  rs:
-    aliases: [randomspawn]
+  randomspawn:
+    aliases: [rs]
     description: RandomSpawn main command.
     permission: randomspawn.default
-
-permissions:
-  randomspawn.*:
-    description: Permission to all commands.
-    children:
-      randomspawn.admin: true
-  randomspawn.admin:
-    description: Permission for admin commands.
-    children:
-      randomspawn.default: true
-      randomspawn.setspawn: true
-      randomspawn.deletespawn: true
-      randomspawn.enable: true
-      randomspawn.disable: true
-      randomspawn.respawn.enable: true
-      randomspawn.respawn.disable: true
-      randomspawn.teleport: true
-      randomspawn.reload: true
-  randomspawn.default:
-    description: Permission for basic commands.
-    default: true
-    children:
-      randomspawn.help: true
-      randomspawn.list: true
-      randomspawn.info: true
-  randomspawn.help:
-    description: Access to the help command.
-  randomspawn.list:
-    description: Access to the list command.
-  randomspawn.info:
-    description: Access to the info command.
-  randomspawn.setspawn:
-    description: Access to the setspawn command.
-  randomspawn.deletespawn:
-    description: Access to the deletespawn command.
-  randomspawn.respawn.enable:
-    description: Access to the enablerespawn command.
-  randomspawn.respawn.disable:
-    description: Access to the disablerespawn command.
-  randomspawn.teleport:
-    description: Access to the teleport command.
-  randomspawn.reload:
-    description: Access to the reload command.

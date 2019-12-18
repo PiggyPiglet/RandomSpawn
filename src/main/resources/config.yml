@@ -1,8 +1,84 @@
-# Warning! /rs reload will not reload this file, and will overwrite any manual changes.
-# safe-locations-in-memory allows you to control ram usage by only storing specific amounts of locations. This option only affects square and radius spawns. If ram usage is too high, you may want to lower this value.
-config-version: 2
+options:
+  blocks:
+    whitelist:
+      enabled: true
+      values:
+        - grass_block
+    blacklist:
+      enabled: false
+      values:
+        - lava
+        - water
+  biomes:
+    whitelist:
+      enabled: true
+      values:
+        - plains
+    blacklist:
+      enabled: false
+      values:
+        - jungle
+        - savanna
+  worlds:
+    whitelist:
+      enabled: true
+      values:
+        - world
+    blacklist:
+      enabled: false
+      values:
+        - world_nether
+        - world_the_end
+  hooks:
+    enabled: false
+    values:
+      - worldguard
+      - worldborder
+      - factions
+      - griefprevention
+    distance-from-claim: 50
+    worldguard:
+      whitelist:
+        enabled: false
+        value:
+          - warzone
+      blacklist:
+        enabled: true
+        value:
+          - spawn
+          - staff
+    factions:
+      safezone: false
+      warzone: true
+      wilderness: true
+      enemy: false
+      own: false
+    griefprevention:
+      own: false
+      other: false
+      wilderness: true
+  respawn: true
+  safe_location: true
 
-settings:
-  never-on-join: false
-  first-join-only: false
-  safe-locations-in-memory: 10
+data:
+  test:
+    type: set
+    locations:
+      - 5,100,5,1,1
+      - 7,100,5,1,1
+      - 9,100,5,1,1
+    world: world
+    enabled: true
+  test2:
+    type: circle
+    center: 5,5
+    world: world
+    radius: 10
+    enabled: true
+  test3:
+    type: square
+    center: 5,5
+    world: world_nether
+    radius: 10
+    enabled: true
+    permission: custom.permission

@@ -1,8 +1,7 @@
 plugins {
     id 'java'
     id 'idea'
-    id 'io.franzbecker.gradle-lombok' version '3.1.0'
-    id 'com.github.johnrengelman.shadow' version '4.0.2'
+    id 'com.github.johnrengelman.shadow' version '5.2.0'
 }
 
 group 'me.piggypiglet'
@@ -12,20 +11,16 @@ sourceCompatibility = 1.8
 repositories {
     mavenCentral()
     maven {
+        url = 'https://repo.piggypiglet.me/repository/maven-releases/'
+    }
+    maven {
         url = 'https://hub.spigotmc.org/nexus/content/groups/public/'
     }
 }
 
 dependencies {
-    compileOnly 'org.spigotmc:spigot-api:1.13.2-R0.1-SNAPSHOT'
-    compile('com.google.inject:guice:+') {
-        exclude group: 'com.google.guava', module: "guava"
-    }
-}
-
-lombok {
-    version = '1.18.8'
-    sha256 = ""
+    compile 'me.piggypiglet:framework-bukkit:1.7.24'
+    compileOnly 'org.spigotmc:spigot-api:1.12.2-R0.1-SNAPSHOT'
 }
 
 import org.apache.tools.ant.filters.ReplaceTokens
@@ -37,7 +32,21 @@ processResources {
 }
 
 shadowJar {
-    destinationDir = file("$rootDir/spigot/plugins")
+    doLast {
+        ['1.12', '1.13', '1.14', '1.15'].each{dest ->
+            copy {
+                from "build/libs/RandomSpawn-${project.version}-all.jar"
+                into "spigot/${dest}/plugins"
+            }
+        }
+    }
+}
+
+clean {
+    delete fileTree('spigot/') {
+        include '**/RandomSpawn*.jar'
+        include '**/plugins/RandomSpawn/*'
+    }
 }
 
 compileJava.options.encoding = 'UTF-8'
