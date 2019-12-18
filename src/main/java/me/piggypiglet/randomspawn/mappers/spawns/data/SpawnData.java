@@ -9,4 +9,9 @@ public final class SpawnData extends Spawn {
     public SpawnData(String name, Spawns type, String permission, boolean enabled, World world, Options options) {
         super(name, type, permission, enabled, world, options);
     }
+
+    @Override
+    protected Spawn copy() {
+        return new SpawnData(getName(), getType(), getPermission(), isEnabled(), getWorld(), getOptions().dupe());
+    }
 }
