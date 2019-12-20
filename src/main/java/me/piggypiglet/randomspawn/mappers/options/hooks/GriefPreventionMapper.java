@@ -28,9 +28,9 @@ public final class GriefPreventionMapper implements ObjectMapper<Map<String, Obj
     @Override
     public Map<String, Object> typeToData(GriefPrevention griefPrevention) {
         return Maps.of(new LinkedHashMap<String, Object>())
-                .key("own").value(griefPrevention.isOwn())
-                .key("other").value(griefPrevention.isOther())
-                .key("wilderness").value(griefPrevention.isWilderness())
+                .key("own", o -> ((boolean) o) != DEFAULT.isOwn()).value(griefPrevention.isOwn())
+                .key("other", o -> ((boolean) o) != DEFAULT.isOther()).value(griefPrevention.isOther())
+                .key("wilderness", w -> ((boolean) w) != DEFAULT.isWilderness()).value(griefPrevention.isWilderness())
                 .build();
     }
 }

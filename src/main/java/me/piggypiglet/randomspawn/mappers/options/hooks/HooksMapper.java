@@ -33,10 +33,10 @@ public final class HooksMapper implements ObjectMapper<Map<String, Object>, Hook
     @Override
     public Map<String, Object> typeToData(Hooks hooks) {
         return Maps.of(HOOKS_MAPPER.typeToData(hooks.getHooks()))
-                .key("distance-from-claim").value(hooks.getDistanceFromClaim())
-                .key("worldguard").value(WORLDGUARD_MAPPER.typeToData(hooks.getWorldGuard()))
-                .key("factions").value(FACTIONS_MAPPER.typeToData(hooks.getFactions()))
-                .key("griefprevention").value(GRIEF_PREVENTION_MAPPER.typeToData(hooks.getGriefPrevention()))
+                .key("distance-from-claim", d -> ((int) d) != DEFAULT.getDistanceFromClaim()).value(hooks.getDistanceFromClaim())
+                .key("worldguard", w -> !w.equals(DEFAULT.getWorldGuard())).value(WORLDGUARD_MAPPER.typeToData(hooks.getWorldGuard()))
+                .key("factions", f -> !f.equals(DEFAULT.getFactions())).value(FACTIONS_MAPPER.typeToData(hooks.getFactions()))
+                .key("griefprevention", g -> !g.equals(DEFAULT.getGriefPrevention())).value(GRIEF_PREVENTION_MAPPER.typeToData(hooks.getGriefPrevention()))
                 .build();
     }
 }

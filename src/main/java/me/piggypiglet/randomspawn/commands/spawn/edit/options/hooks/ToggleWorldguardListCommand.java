@@ -18,7 +18,7 @@ public final class ToggleWorldguardListCommand extends AbstractEditCommand {
     @Inject private PendingSpawnManager pendingSpawnManager;
 
     public ToggleWorldguardListCommand() {
-        super("edit worldguard toggle");
+        super("worldguard toggle");
         options
                 .playerOnly(true)
                 .permissions("randomspawn.admin", "randomspawn.edit")

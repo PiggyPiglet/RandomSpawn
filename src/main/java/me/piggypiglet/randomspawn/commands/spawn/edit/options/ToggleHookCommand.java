@@ -18,7 +18,7 @@ public final class ToggleHookCommand extends AbstractEditCommand {
     @Inject private PendingSpawnManager pendingSpawnManager;
 
     public ToggleHookCommand() {
-        super("edit hook toggle");
+        super("hook toggle");
         options
                 .playerOnly(true)
                 .description("Toggle a hook for a spawn.")

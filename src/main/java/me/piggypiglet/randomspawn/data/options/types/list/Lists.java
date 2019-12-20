@@ -32,4 +32,13 @@ public final class Lists {
     public Lists dupe() {
         return new Lists(whitelist.dupe(), blacklist.dupe());
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (!(obj instanceof Lists)) return false;
+        final Lists lists = (Lists) obj;
+
+        return lists.blacklist.equals(blacklist) &&
+                lists.whitelist.equals(whitelist);
+    }
 }

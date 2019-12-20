@@ -75,4 +75,17 @@ public final class Options implements Cloneable {
     public Options dupe() {
         return new Options(blocks.dupe(), biomes.dupe(), worlds.dupe(), hooks.dupe(), respawn, safeLocation);
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (!(obj instanceof Options)) return false;
+        final Options options = (Options) obj;
+
+        return options.blocks.equals(blocks) &&
+                options.biomes.equals(biomes) &&
+                options.worlds.equals(worlds) &&
+                options.hooks.equals(hooks) &&
+                options.respawn == respawn &&
+                options.safeLocation == safeLocation;
+    }
 }

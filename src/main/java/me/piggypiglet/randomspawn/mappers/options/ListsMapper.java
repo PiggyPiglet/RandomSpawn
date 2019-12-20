@@ -12,10 +12,12 @@ import java.util.Map;
 // https://www.piggypiglet.me
 // ------------------------------
 public final class ListsMapper implements ObjectMapper<Map<String, Object>, Lists> {
+    private final Lists def;
     private final ListMapper whitelist;
     private final ListMapper blacklist;
 
     public ListsMapper(String prefix, Lists def) {
+        this.def = def;
         whitelist = new ListMapper(prefix + ".whitelist", def.getWhitelist());
         blacklist = new ListMapper(prefix + ".blacklist", def.getBlacklist());
     }
@@ -31,8 +33,8 @@ public final class ListsMapper implements ObjectMapper<Map<String, Object>, List
     @Override
     public Map<String, Object> typeToData(Lists lists) {
         return Maps.of(new LinkedHashMap<String, Object>())
-                .key("whitelist").value(whitelist.typeToData(lists.getWhitelist()))
-                .key("blacklist").value(blacklist.typeToData(lists.getBlacklist()))
+                .key("whitelist", w -> !w.equals(def.getWhitelist())).value(whitelist.typeToData(lists.getWhitelist()))
+                .key("blacklist", b -> !b.equals(def.getBlacklist())).value(blacklist.typeToData(lists.getBlacklist()))
                 .build();
     }
 }

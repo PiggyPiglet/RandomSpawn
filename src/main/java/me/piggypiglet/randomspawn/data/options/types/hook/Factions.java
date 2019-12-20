@@ -62,4 +62,16 @@ public final class Factions {
     public Factions dupe() {
         return new Factions(safezone, warzone, wilderness, enemy, own);
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (!(obj instanceof Factions)) return false;
+        final Factions factions = (Factions) obj;
+
+        return factions.safezone == safezone &&
+                factions.warzone == warzone &&
+                factions.wilderness == wilderness &&
+                factions.enemy == enemy &&
+                factions.own == own;
+    }
 }

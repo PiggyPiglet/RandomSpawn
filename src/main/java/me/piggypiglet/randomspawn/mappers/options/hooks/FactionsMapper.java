@@ -30,11 +30,11 @@ public final class FactionsMapper implements ObjectMapper<Map<String, Object>, F
     @Override
     public Map<String, Object> typeToData(Factions factions) {
         return Maps.of(new LinkedHashMap<String, Object>())
-                .key("safezone").value(factions.isSafezone())
-                .key("warzone").value(factions.isWarzone())
-                .key("wilderness").value(factions.isWilderness())
-                .key("enemy").value(factions.isEnemy())
-                .key("own").value(factions.isOwn())
+                .key("safezone", s -> ((boolean) s) != DEFAULT.isSafezone()).value(factions.isSafezone())
+                .key("warzone", w -> ((boolean) w) != DEFAULT.isWarzone()).value(factions.isWarzone())
+                .key("wilderness", w -> ((boolean) w) != DEFAULT.isWilderness()).value(factions.isWilderness())
+                .key("enemy", e -> ((boolean) e) != DEFAULT.isEnemy()).value(factions.isEnemy())
+                .key("own", o -> ((boolean) o) != DEFAULT.isOwn()).value(factions.isOwn())
                 .build();
     }
 }

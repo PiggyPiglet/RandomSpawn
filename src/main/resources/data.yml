@@ -59,26 +59,3 @@ options:
       wilderness: true
   respawn: true
   safe_location: true
-
-data:
-  test:
-    type: set
-    locations:
-      - 5,100,5,1,1
-      - 7,100,5,1,1
-      - 9,100,5,1,1
-    world: world
-    enabled: true
-  test2:
-    type: circle
-    center: 5,5
-    world: world
-    radius: 10
-    enabled: true
-  test3:
-    type: square
-    center: 5,5
-    world: world_nether
-    radius: 10
-    enabled: true
-    permission: custom.permission

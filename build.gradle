@@ -19,8 +19,8 @@ repositories {
 }
 
 dependencies {
-    compile 'me.piggypiglet:framework-bukkit:1.7.24'
-    compileOnly 'org.spigotmc:spigot-api:1.12.2-R0.1-SNAPSHOT'
+    compile 'me.piggypiglet:framework-bukkit:1.8.4'
+    compileOnly 'org.bukkit:bukkit:1.12.2-R0.1-SNAPSHOT'
 }
 
 import org.apache.tools.ant.filters.ReplaceTokens

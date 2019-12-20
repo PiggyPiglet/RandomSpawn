@@ -15,7 +15,7 @@ import java.util.*;
 // https://www.piggypiglet.me
 // ------------------------------
 public final class OptionsMapper implements ObjectMapper<Map<String, Object>, Options> {
-    public static final Options DEFAULT = new Options(
+    public static Options DEFAULT = new Options(
             new Lists(
                     new List(
                             true, Collections.singleton("grass_block")
@@ -84,12 +84,12 @@ public final class OptionsMapper implements ObjectMapper<Map<String, Object>, Op
     @Override
     public Map<String, Object> typeToData(Options options) {
         return Maps.of(new LinkedHashMap<String, Object>())
-                .key("blocks").value(BLOCKS_MAPPER.typeToData(options.getBlocks()))
-                .key("biomes").value(BIOMES_MAPPER.typeToData(options.getBiomes()))
-                .key("worlds").value(WORLDS_MAPPER.typeToData(options.getWorlds()))
-                .key("hooks").value(HOOKS_MAPPER.typeToData(options.getHooks()))
-                .key("respawn").value(options.isRespawn())
-                .key("safe_location").value(options.isSafeLocation())
+                .key("blocks", b -> !b.equals(DEFAULT.getBlocks())).value(BLOCKS_MAPPER.typeToData(options.getBlocks()))
+                .key("biomes", b -> !b.equals(DEFAULT.getBiomes())).value(BIOMES_MAPPER.typeToData(options.getBiomes()))
+                .key("worlds", w -> !w.equals(DEFAULT.getWorlds())).value(WORLDS_MAPPER.typeToData(options.getWorlds()))
+                .key("hooks", h -> !h.equals(DEFAULT.getHooks())).value(HOOKS_MAPPER.typeToData(options.getHooks()))
+                .key("respawn", r -> ((boolean) r) != options.isRespawn()).value(options.isRespawn())
+                .key("safe_location", s -> ((boolean) s) != options.isSafeLocation()).value(options.isSafeLocation())
                 .build();
     }
 }

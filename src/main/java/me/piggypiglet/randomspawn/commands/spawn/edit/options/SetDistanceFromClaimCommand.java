@@ -14,7 +14,7 @@ public final class SetDistanceFromClaimCommand extends AbstractEditCommand {
     @Inject private PendingSpawnManager pendingSpawnManager;
 
     public SetDistanceFromClaimCommand() {
-        super("edit dfc");
+        super("dfc");
         options
                 .playerOnly(true)
                 .usage("<value>")

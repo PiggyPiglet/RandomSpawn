@@ -1,15 +1,15 @@
 commands:
   not_pending: "&7You are not in edit/create mode."
   in_pending: "&7You are already in edit/create mode. Run &c/rs cancel &7to exit."
+  success: "&7Successfully edited/created spawn."
   create:
     already_exists: "&7A spawn by the name of &c%s &7already exists."
     enabled: "&7Create mode enabled. Use &c/rs cancel &7to exit."
     set:
-      set: "&7Use &c/rs create location add &7when in location to add a location. Do not change world."
+      set: "&7Use &c/rs location add &7when in location to add a location. Do not change world."
       not: "Locations cannot be manually added to this type of spawn."
       added: "&7Successfully added x: &c%s&7, y: &c%s&7, z: &c%s&7, yaw: &c%s&7, pitch: &c%s&7."
     confirm: "&7Run &c/rs confirm &7when you're finished to create the spawn."
-    sucess: "&7Spawn successfully created."
   edit:
     unknown: "&7There is no spawn with that name, did you mean &c%s&7?"
     no_spawns: "&7There are no spawns to edit."
@@ -24,6 +24,14 @@ commands:
       update: "&7Updated &c%s &7to &c%s&7."
     dfc:
       success: "&7Set &c%s &7as the new distance from claim value."
-    success: "&7Edits successfully made."
+  list:
+    header: "&7-------- &cSpawns &7--------"
+    format: "&8- &c%s &7(&c%s&7)"
+    footer: "&7--------------------------"
+  save:
+    success: "&7Successfully saved data to file."
+  reload:
+    failure: "&7Something went wrong when reloading."
+    success: "&7Successfully reloaded the plugin."
   cancel:
     success: "&7Successfully exited edit/create mode."

@@ -41,15 +41,20 @@ public final class SpawnDataMapper implements ObjectMapper<Map.Entry<String, Map
 
     @Override
     public Map.Entry<String, Map<String, Object>> typeToData(Spawn spawn) {
+        final Map<String, Object> map = Maps.of(new LinkedHashMap<String, Object>())
+                .key("type").value(spawn.getType().toString())
+                .key("permission").value(spawn.getPermission())
+                .key("enabled").value(spawn.isEnabled())
+                .key("world").value(spawn.getWorld().getName())
+                .build();
+
+        if (!spawn.getOptions().equals(OptionsMapper.DEFAULT)) {
+            map.put("options", OPTIONS_MAPPER.typeToData(spawn.getOptions()));
+        }
+
         return new AbstractMap.SimpleEntry<>(
                 spawn.getName(),
-                Maps.of(new LinkedHashMap<String, Object>())
-                        .key("type").value(spawn.getType())
-                        .key("permission").value(spawn.getPermission())
-                        .key("enabled").value(spawn.isEnabled())
-                        .key("world").value(spawn.getWorld().getName())
-                        .key("options").value(OPTIONS_MAPPER.typeToData(spawn.getOptions()))
-                        .build()
+                map
         );
     }
 }

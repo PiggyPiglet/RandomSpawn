@@ -30,9 +30,9 @@ public final class HookListMapper implements ObjectMapper<Map<String, Object>, H
                 (boolean) map.getOrDefault(prefix + ".enabled", def.isEnabled()),
                 ((Collection<String>) map.getOrDefault(prefix + ".values", def.getValues().stream()
                         .map(HookTypes::toString)
-                        .map(String::toLowerCase)
                         .collect(Collectors.toSet())))
                         .stream()
+                        .map(String::toUpperCase)
                         .map(HookTypes::valueOf)
                         .collect(Collectors.toSet())
         );
@@ -41,8 +41,8 @@ public final class HookListMapper implements ObjectMapper<Map<String, Object>, H
     @Override
     public Map<String, Object> typeToData(HookList hookList) {
         return Maps.of(new LinkedHashMap<String, Object>())
-                .key("enabled").value(hookList.isEnabled())
-                .key("values").value(hookList.getValues().stream().map(HookTypes::toString).collect(Collectors.toSet()))
+                .key("enabled", e -> ((boolean) e) != def.isEnabled()).value(hookList.isEnabled())
+                .key("values", v -> !v.equals(def.getValues())).value(hookList.getValues().stream().map(HookTypes::toString).collect(Collectors.toList()))
                 .build();
     }
 }

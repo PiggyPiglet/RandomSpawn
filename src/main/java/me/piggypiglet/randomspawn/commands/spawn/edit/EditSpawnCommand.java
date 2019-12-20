@@ -40,7 +40,7 @@ public final class EditSpawnCommand extends BukkitCommand {
                 return true;
             }
 
-            if (spawnManager.exists(name)) {
+            if (!spawnManager.exists(name)) {
                 final List<Spawn> spawns = spawnManager.search(name);
 
                 if (spawns.isEmpty()) {

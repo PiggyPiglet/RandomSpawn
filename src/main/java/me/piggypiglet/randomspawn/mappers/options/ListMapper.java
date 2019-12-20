@@ -4,10 +4,7 @@ import me.piggypiglet.framework.mapper.ObjectMapper;
 import me.piggypiglet.framework.utils.map.Maps;
 import me.piggypiglet.randomspawn.data.options.types.list.List;
 
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.LinkedHashMap;
-import java.util.Map;
+import java.util.*;
 
 // ------------------------------
 // Copyright (c) PiggyPiglet 2019
@@ -34,8 +31,8 @@ public final class ListMapper implements ObjectMapper<Map<String, Object>, List>
     @Override
     public Map<String, Object> typeToData(List list) {
         return Maps.of(new LinkedHashMap<String, Object>())
-                .key("enabled").value(list.isEnabled())
-                .key("values").value(list.getValues())
+                .key("enabled", e -> ((boolean) e) != def.isEnabled()).value(list.isEnabled())
+                .key("values", v -> !v.equals(new ArrayList<>(def.getValues()))).value(new ArrayList<>(list.getValues()))
                 .build();
     }
 }

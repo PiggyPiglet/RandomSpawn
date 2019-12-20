@@ -20,7 +20,7 @@ public final class AddLocationCommand extends BukkitCommand {
     @Inject private PendingSpawnManager pendingSpawnManager;
 
     public AddLocationCommand() {
-        super("create location add");
+        super("location add");
         options
                 .playerOnly(true)
                 .usage("")
@@ -47,7 +47,11 @@ public final class AddLocationCommand extends BukkitCommand {
 
         final Location location = player.getLocation();
         ((SetSpawn) spawn).getLocations().add(location);
-        user.sendMessage(Lang.ADDED_LOCATION, location.getX(), location.getY(), location.getZ(), location.getYaw(), location.getPitch());
+        user.sendMessage(Lang.ADDED_LOCATION, round(location.getX()), round(location.getY()), round(location.getZ()), round(location.getYaw()), round(location.getPitch()));
         return true;
+    }
+
+    private double round(double val) {
+        return Math.round(val * 100.0) / 100.0;
     }
 }

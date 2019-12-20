@@ -9,6 +9,7 @@ import me.piggypiglet.framework.lang.LangEnum;
 public enum Lang implements LangEnum {
     NOT_PENDING("commands.not_pending"),
     IN_PENDING("commands.in_pending"),
+    SUCCESS("commands.success"),
 
     SPAWN_ALREADY_EXISTS("commands.create.already_exists"),
     CREATE_ENABLED("commands.create.enabled"),
@@ -16,7 +17,6 @@ public enum Lang implements LangEnum {
     CONFIRM("commands.create.confirm"),
     NOT_SET_SPAWN("commands.create.set.not"),
     ADDED_LOCATION("commands.create.set.added"),
-    SUCCESS("commands.create.success"),
 
     UNKNOWN_SPAWN("commands.edit.unknown"),
     NO_SPAWNS("commands.edit.no_spawns"),
@@ -28,7 +28,15 @@ public enum Lang implements LangEnum {
     LIST_MODIFICATION_ADDED("commands.edit.toggle.list_mod.added"),
     LIST_MODIFICATION_REMOVED("commands.edit.toggle.list_mod.removed"),
     HOOK_UPDATE("commands.edit.toggle.update"),
-    EDIT_SUCCESS("commands.edit.success"),
+
+    LIST_HEADER("commands.list.header"),
+    LIST_FORMAT("commands.list.format"),
+    LIST_FOOTER("commands.list.footer"),
+
+    SAVE_SUCCESS("commands.save.success"),
+
+    RELOAD_FAILURE("commands.reload.failure"),
+    RELOAD_SUCCESS("commands.reload.success"),
 
     CANCEL_SUCCESS("commands.cancel.success")
     ;

@@ -12,11 +12,10 @@ import me.piggypiglet.randomspawn.managers.PendingSpawnManager;
 // https://www.piggypiglet.me
 // ------------------------------
 public final class ToggleFactionsCommand extends AbstractEditCommand {
-    @Inject
-    private PendingSpawnManager pendingSpawnManager;
+    @Inject private PendingSpawnManager pendingSpawnManager;
 
     public ToggleFactionsCommand() {
-        super("edit factions toggle");
+        super("factions toggle");
         options
                 .playerOnly(true)
                 .usage("<key> [value]")
@@ -29,7 +28,6 @@ public final class ToggleFactionsCommand extends AbstractEditCommand {
         if (args.length >= 1) {
             args[0] = args[0].toLowerCase();
             final Factions factions = pendingSpawnManager.get(user.getAsPlayer().getUuid()).getSpawn().getOptions().getHooks().getFactions();
-            final boolean newVal;
             Boolean setValue = null;
 
             if (args.length >= 2) {

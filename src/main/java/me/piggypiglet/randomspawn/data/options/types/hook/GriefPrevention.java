@@ -42,4 +42,14 @@ public final class GriefPrevention {
     public GriefPrevention dupe() {
         return new GriefPrevention(own, other, wilderness);
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (!(obj instanceof GriefPrevention)) return false;
+        final GriefPrevention griefPrevention = (GriefPrevention) obj;
+
+        return griefPrevention.own == own &&
+                griefPrevention.other == other &&
+                griefPrevention.wilderness == wilderness;
+    }
 }

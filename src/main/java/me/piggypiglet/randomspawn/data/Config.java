@@ -22,7 +22,16 @@ public final class Config {
         return options;
     }
 
+    public void setOptions(Options options) {
+        this.options = options;
+    }
+
     public Map<String, Spawn> getSpawns() {
         return spawns;
+    }
+
+    public void set(Config config) {
+        this.options = config.getOptions();
+        this.spawns = config.getSpawns();
     }
 }

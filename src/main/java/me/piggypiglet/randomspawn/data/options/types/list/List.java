@@ -35,4 +35,13 @@ public final class List {
     public List dupe() {
         return new List(enabled, new HashSet<>(values));
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (!(obj instanceof List)) return false;
+        final List list = (List) obj;
+
+        return list.enabled == enabled &&
+                list.values.equals(values);
+    }
 }

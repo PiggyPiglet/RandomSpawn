@@ -1,4 +1,4 @@
-package me.piggypiglet.randomspawn.commands.spawn.create;
+package me.piggypiglet.randomspawn.commands.spawn;
 
 import com.google.inject.Inject;
 import me.piggypiglet.framework.bukkit.commands.framework.BukkitCommand;
@@ -13,17 +13,17 @@ import me.piggypiglet.randomspawn.managers.SpawnManager;
 // Copyright (c) PiggyPiglet 2019
 // https://www.piggypiglet.me
 // ------------------------------
-public final class ConfirmSpawnCommand extends BukkitCommand {
+public final class ConfirmCommand extends BukkitCommand {
     @Inject private PendingSpawnManager pendingSpawnManager;
     @Inject private SpawnManager spawnManager;
 
-    public ConfirmSpawnCommand() {
-        super("create confirm");
+    public ConfirmCommand() {
+        super("confirm");
         options
                 .playerOnly(true)
-                .permissions("randomspawn.admin", "randomspawn.create")
+                .permissions("randomspawn.admin", "randomspawn.create", "randomspawn.edit")
                 .usage("")
-                .description("Confirm the creation of a spawn.");
+                .description("Confirm the creation/edit of a spawn.");
     }
 
     @Override

@@ -28,7 +28,7 @@ public final class NewSpawnCommand extends BukkitCommand {
     @Inject private Config config;
 
     public NewSpawnCommand() {
-        super("spawn create");
+        super("create");
         options
                 .playerOnly(true)
                 .permissions("randomspawn.admin", "randomspawn.create")

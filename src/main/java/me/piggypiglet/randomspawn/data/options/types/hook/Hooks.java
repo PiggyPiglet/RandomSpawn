@@ -64,4 +64,16 @@ public final class Hooks {
     public Hooks dupe() {
         return new Hooks(hooks.dupe(), distanceFromClaim, worldGuard.dupe(), factions.dupe(), griefPrevention.dupe());
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (!(obj instanceof Hooks)) return false;
+        final Hooks hooks = (Hooks) obj;
+
+        return hooks.hooks.equals(this.hooks) &&
+                hooks.distanceFromClaim == distanceFromClaim &&
+                hooks.worldGuard.equals(worldGuard) &&
+                hooks.factions.equals(factions) &&
+                hooks.griefPrevention.equals(griefPrevention);
+    }
 }

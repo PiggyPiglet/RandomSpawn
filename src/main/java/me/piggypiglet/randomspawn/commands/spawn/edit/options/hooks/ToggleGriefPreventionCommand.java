@@ -15,7 +15,7 @@ public final class ToggleGriefPreventionCommand extends AbstractEditCommand {
     @Inject private PendingSpawnManager pendingSpawnManager;
 
     public ToggleGriefPreventionCommand() {
-        super("edit griefprevention toggle");
+        super("griefprevention toggle");
         options
                 .playerOnly(true)
                 .description("Toggle a griefprevention hook value for a spawn.")

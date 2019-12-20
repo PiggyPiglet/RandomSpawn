@@ -35,4 +35,13 @@ public final class HookList {
     public HookList dupe() {
         return new HookList(enabled, new HashSet<>(values));
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (!(obj instanceof HookList)) return false;
+        final HookList hookList = (HookList) obj;
+
+        return hookList.enabled == enabled &&
+                hookList.values.equals(values);
+    }
 }

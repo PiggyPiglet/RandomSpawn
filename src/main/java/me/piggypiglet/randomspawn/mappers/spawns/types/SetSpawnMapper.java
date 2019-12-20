@@ -41,7 +41,7 @@ public final class SetSpawnMapper implements ObjectMapper<Map.Entry<String, Map<
         return new AbstractMap.SimpleEntry<>(
                 data.getKey(),
                 Maps.of(data.getValue())
-                        .key("locations").value(spawn.getLocations().stream().map(locationMapper::typeToData).collect(Collectors.toSet()))
+                        .key("locations").value(spawn.getLocations().stream().map(locationMapper::typeToData).collect(Collectors.toList()))
                         .build()
         );
     }

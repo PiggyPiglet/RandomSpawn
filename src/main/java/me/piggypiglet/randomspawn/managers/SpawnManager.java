@@ -18,11 +18,14 @@ import java.util.Map;
 public final class SpawnManager extends SearchableManager<Spawn> {
     public static final Spawn DEFAULT = new SpawnData(null, null, null, false, null, null);
 
-    private final Map<String, Spawn> spawns;
+    @Inject private Config config;
 
-    @Inject
-    public SpawnManager(Config config) {
+    private Map<String, Spawn> spawns;
+
+    @Override
+    protected void preConfigure() {
         spawns = config.getSpawns();
+        items.addAll(spawns.values());
     }
 
     @Override
