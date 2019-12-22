@@ -19,6 +19,10 @@ public enum Lang implements LangEnum {
     NOT_SET_SPAWN("commands.modify.set.add.not"),
     ADDED_LOCATION("commands.modify.set.add.success"),
 
+    NOT_RADIUS_SPAWN("commands.modify.radius.not"),
+    SET_CENTER("commands.modify.radius.center"),
+    SET_RADIUS("commands.modify.radius.radius"),
+
     INDEX_TOO_BIG("commands.modify.set.remove.index_too_big"),
     REMOVED_LOCATION("commands.modify.set.remove.success"),
 

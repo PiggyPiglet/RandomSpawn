@@ -10,6 +10,10 @@ commands:
       remove:
         index_too_big: "&7An index of &c%s &7is too big, the max index is &c%s&7."
         success: "&7Successfully removed location &c%s&7."
+    radius:
+      center: "&7Successfully set the center to &c%s&7, &c%s&7."
+      radius: "&7Successfully set the radius to &c%s&7."
+
   create:
     already_exists: "&7A spawn by the name of &c%s &7already exists."
     enabled: "&7Create mode enabled. Use &c/rs cancel &7to exit."
