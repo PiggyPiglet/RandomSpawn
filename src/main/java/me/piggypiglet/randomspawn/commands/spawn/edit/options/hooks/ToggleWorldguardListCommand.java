@@ -2,7 +2,7 @@ package me.piggypiglet.randomspawn.commands.spawn.edit.options.hooks;
 
 import com.google.inject.Inject;
 import me.piggypiglet.framework.bukkit.user.BukkitUser;
-import me.piggypiglet.randomspawn.commands.spawn.edit.AbstractEditCommand;
+import me.piggypiglet.randomspawn.commands.spawn.ModifyModeCommand;
 import me.piggypiglet.randomspawn.data.options.types.list.List;
 import me.piggypiglet.randomspawn.data.options.types.list.Lists;
 import me.piggypiglet.randomspawn.lang.Lang;
@@ -14,7 +14,7 @@ import java.util.Set;
 // Copyright (c) PiggyPiglet 2019
 // https://www.piggypiglet.me
 // ------------------------------
-public final class ToggleWorldguardListCommand extends AbstractEditCommand {
+public final class ToggleWorldguardListCommand extends ModifyModeCommand {
     @Inject private PendingSpawnManager pendingSpawnManager;
 
     public ToggleWorldguardListCommand() {
@@ -51,7 +51,7 @@ public final class ToggleWorldguardListCommand extends AbstractEditCommand {
                     values.add(args[1]);
                 }
 
-                user.sendMessage(Lang.LIST_MODIFICATION, values.contains(args[1]) ? Lang.LIST_MODIFICATION_ADDED : Lang.LIST_MODIFICATION_REMOVED, args[1], args[0]);
+                user.sendMessage(values.contains(args[1]) ? Lang.LIST_MODIFICATION_ADDED : Lang.LIST_MODIFICATION_REMOVED, args[1], args[0]);
             } else {
                 list.setEnabled(!list.isEnabled());
                 user.sendMessage(Lang.TOGGLED_LIST, args[0], list.isEnabled());

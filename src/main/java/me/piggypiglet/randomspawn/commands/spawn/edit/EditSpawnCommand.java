@@ -3,11 +3,11 @@ package me.piggypiglet.randomspawn.commands.spawn.edit;
 import com.google.inject.Inject;
 import me.piggypiglet.framework.bukkit.commands.framework.BukkitCommand;
 import me.piggypiglet.framework.bukkit.user.BukkitUser;
-import me.piggypiglet.randomspawn.commands.spawn.create.objects.PendingSpawn;
 import me.piggypiglet.randomspawn.data.spawn.Spawn;
 import me.piggypiglet.randomspawn.lang.Lang;
 import me.piggypiglet.randomspawn.managers.PendingSpawnManager;
 import me.piggypiglet.randomspawn.managers.SpawnManager;
+import me.piggypiglet.randomspawn.managers.objects.PendingSpawn;
 
 import java.util.List;
 import java.util.UUID;

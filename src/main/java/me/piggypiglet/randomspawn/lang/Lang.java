@@ -13,10 +13,14 @@ public enum Lang implements LangEnum {
 
     SPAWN_ALREADY_EXISTS("commands.create.already_exists"),
     CREATE_ENABLED("commands.create.enabled"),
-    SET_SET("commands.create.set.set"),
     CONFIRM("commands.create.confirm"),
-    NOT_SET_SPAWN("commands.create.set.not"),
-    ADDED_LOCATION("commands.create.set.added"),
+    SET_SET("commands.create.set.set"),
+
+    NOT_SET_SPAWN("commands.modify.set.add.not"),
+    ADDED_LOCATION("commands.modify.set.add.success"),
+
+    INDEX_TOO_BIG("commands.modify.set.remove.index_too_big"),
+    REMOVED_LOCATION("commands.modify.set.remove.success"),
 
     UNKNOWN_SPAWN("commands.edit.unknown"),
     NO_SPAWNS("commands.edit.no_spawns"),
@@ -24,7 +28,6 @@ public enum Lang implements LangEnum {
     TOGGLED_HOOKS("commands.edit.toggle.hook"),
     DISTANCE_SUCCESS("commands.edit.dfc.success"),
     TOGGLED_LIST("commands.edit.toggle.list"),
-    LIST_MODIFICATION("commands.edit.toggle.list_mod.value"),
     LIST_MODIFICATION_ADDED("commands.edit.toggle.list_mod.added"),
     LIST_MODIFICATION_REMOVED("commands.edit.toggle.list_mod.removed"),
     HOOK_UPDATE("commands.edit.toggle.update"),
@@ -32,6 +35,13 @@ public enum Lang implements LangEnum {
     LIST_HEADER("commands.list.header"),
     LIST_FORMAT("commands.list.format"),
     LIST_FOOTER("commands.list.footer"),
+
+    INFO_HEADER("commands.info.header"),
+    INFO_FORMAT("commands.info.format"),
+    INFO_FOOTER("commands.info.footer"),
+    INFO_SET_ADDENDUM("commands.info.set.addendum"),
+    INFO_SET_FORMAT("commands.info.set.format"),
+    INFO_RADIUS_ADDENDUM("commands.info.radius.addendum"),
 
     SAVE_SUCCESS("commands.save.success"),
 

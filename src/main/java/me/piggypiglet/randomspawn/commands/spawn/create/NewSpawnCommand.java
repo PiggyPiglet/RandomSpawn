@@ -3,7 +3,6 @@ package me.piggypiglet.randomspawn.commands.spawn.create;
 import com.google.inject.Inject;
 import me.piggypiglet.framework.bukkit.commands.framework.BukkitCommand;
 import me.piggypiglet.framework.bukkit.user.BukkitUser;
-import me.piggypiglet.randomspawn.commands.spawn.create.objects.PendingSpawn;
 import me.piggypiglet.randomspawn.data.Config;
 import me.piggypiglet.randomspawn.data.spawn.Spawn;
 import me.piggypiglet.randomspawn.data.spawn.types.RadiusSpawn;
@@ -12,11 +11,12 @@ import me.piggypiglet.randomspawn.data.spawn.types.Spawns;
 import me.piggypiglet.randomspawn.lang.Lang;
 import me.piggypiglet.randomspawn.managers.PendingSpawnManager;
 import me.piggypiglet.randomspawn.managers.SpawnManager;
+import me.piggypiglet.randomspawn.managers.objects.PendingSpawn;
 import me.piggypiglet.randomspawn.mappers.spawns.data.SpawnData;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 
-import java.util.HashSet;
+import java.util.LinkedHashSet;
 
 // ------------------------------
 // Copyright (c) PiggyPiglet 2019
@@ -67,7 +67,7 @@ public final class NewSpawnCommand extends BukkitCommand {
             switch (type) {
                 case SET:
                     user.sendMessage(Lang.SET_SET);
-                    spawn = new SetSpawn(spawn.getName(), spawn.getType(), spawn.getPermission(), spawn.isEnabled(), spawn.getWorld(), spawn.getOptions(), new HashSet<>());
+                    spawn = new SetSpawn(spawn.getName(), spawn.getType(), spawn.getPermission(), spawn.isEnabled(), spawn.getWorld(), spawn.getOptions(), new LinkedHashSet<>());
                     break;
 
                 case SQUARE:

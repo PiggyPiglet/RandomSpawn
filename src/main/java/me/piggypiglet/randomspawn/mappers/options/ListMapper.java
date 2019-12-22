@@ -24,7 +24,7 @@ public final class ListMapper implements ObjectMapper<Map<String, Object>, List>
     public List dataToType(Map<String, Object> map) {
         return new List(
                 (boolean) map.getOrDefault(prefix + ".enabled", def.isEnabled()),
-                new HashSet<>((Collection<String>) map.getOrDefault(prefix + ".values", def.getValues()))
+                new LinkedHashSet<>((Collection<String>) map.getOrDefault(prefix + ".values", def.getValues()))
         );
     }
 

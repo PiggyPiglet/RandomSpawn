@@ -21,7 +21,7 @@ public final class OptionsMapper implements ObjectMapper<Map<String, Object>, Op
                             true, Collections.singleton("grass_block")
                     ),
                     new List(
-                            false, new HashSet<>(Arrays.asList("lava", "water"))
+                            false, new LinkedHashSet<>(Arrays.asList("lava", "water"))
                     )
             ),
             new Lists(
@@ -29,7 +29,7 @@ public final class OptionsMapper implements ObjectMapper<Map<String, Object>, Op
                             true, Collections.singleton("plains")
                     ),
                     new List(
-                            false, new HashSet<>(Arrays.asList("jungle", "savanna"))
+                            false, new LinkedHashSet<>(Arrays.asList("jungle", "savanna"))
                     )
             ),
             new Lists(
@@ -37,12 +37,12 @@ public final class OptionsMapper implements ObjectMapper<Map<String, Object>, Op
                             true, Collections.singleton("world")
                     ),
                     new List(
-                            false, new HashSet<>(Arrays.asList("world_nether", "world_the_end"))
+                            false, new LinkedHashSet<>(Arrays.asList("world_nether", "world_the_end"))
                     )
             ),
             new Hooks(
                     new HookList(
-                            false, new HashSet<>(Arrays.asList(HookTypes.values()))
+                            false, new LinkedHashSet<>(Arrays.asList(HookTypes.values()))
                     ),
                     50,
                     new Lists(
@@ -50,7 +50,7 @@ public final class OptionsMapper implements ObjectMapper<Map<String, Object>, Op
                                     false, Collections.singleton("warzone")
                             ),
                             new List(
-                                    true, new HashSet<>(Arrays.asList("spawn", "staff"))
+                                    true, new LinkedHashSet<>(Arrays.asList("spawn", "staff"))
                             )
                     ),
                     new Factions(

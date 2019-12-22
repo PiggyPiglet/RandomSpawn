@@ -21,4 +21,8 @@ public final class MathUtils {
 
         return coords;
     }
+
+    public static double round(double val) {
+        return Math.round(val * 100.0) / 100.0;
+    }
 }

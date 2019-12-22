@@ -2,7 +2,7 @@ package me.piggypiglet.randomspawn.commands.spawn.edit.options;
 
 import com.google.inject.Inject;
 import me.piggypiglet.framework.bukkit.user.BukkitUser;
-import me.piggypiglet.randomspawn.commands.spawn.edit.AbstractEditCommand;
+import me.piggypiglet.randomspawn.commands.spawn.ModifyModeCommand;
 import me.piggypiglet.randomspawn.data.options.types.hook.HookTypes;
 import me.piggypiglet.randomspawn.data.options.types.hook.Hooks;
 import me.piggypiglet.randomspawn.lang.Lang;
@@ -14,7 +14,7 @@ import java.util.Set;
 // Copyright (c) PiggyPiglet 2019
 // https://www.piggypiglet.me
 // ------------------------------
-public final class ToggleHookCommand extends AbstractEditCommand {
+public final class ToggleHookCommand extends ModifyModeCommand {
     @Inject private PendingSpawnManager pendingSpawnManager;
 
     public ToggleHookCommand() {

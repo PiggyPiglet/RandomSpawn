@@ -2,7 +2,7 @@ package me.piggypiglet.randomspawn.commands.spawn.edit.options.hooks;
 
 import com.google.inject.Inject;
 import me.piggypiglet.framework.bukkit.user.BukkitUser;
-import me.piggypiglet.randomspawn.commands.spawn.edit.AbstractEditCommand;
+import me.piggypiglet.randomspawn.commands.spawn.ModifyModeCommand;
 import me.piggypiglet.randomspawn.data.options.types.hook.GriefPrevention;
 import me.piggypiglet.randomspawn.lang.Lang;
 import me.piggypiglet.randomspawn.managers.PendingSpawnManager;
@@ -11,7 +11,7 @@ import me.piggypiglet.randomspawn.managers.PendingSpawnManager;
 // Copyright (c) PiggyPiglet 2019
 // https://www.piggypiglet.me
 // ------------------------------
-public final class ToggleGriefPreventionCommand extends AbstractEditCommand {
+public final class ToggleGriefPreventionCommand extends ModifyModeCommand {
     @Inject private PendingSpawnManager pendingSpawnManager;
 
     public ToggleGriefPreventionCommand() {

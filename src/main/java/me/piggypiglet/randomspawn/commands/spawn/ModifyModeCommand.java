@@ -1,4 +1,4 @@
-package me.piggypiglet.randomspawn.commands.spawn.edit;
+package me.piggypiglet.randomspawn.commands.spawn;
 
 import com.google.inject.Inject;
 import me.piggypiglet.framework.bukkit.commands.framework.BukkitCommand;
@@ -12,10 +12,10 @@ import java.util.UUID;
 // Copyright (c) PiggyPiglet 2019
 // https://www.piggypiglet.me
 // ------------------------------
-public abstract class AbstractEditCommand extends BukkitCommand {
+public abstract class ModifyModeCommand extends BukkitCommand {
     @Inject private PendingSpawnManager pendingSpawnManager;
 
-    protected AbstractEditCommand(String command) {
+    protected ModifyModeCommand(String command) {
         super(command);
     }
 

@@ -2,7 +2,7 @@ package me.piggypiglet.randomspawn.commands.spawn.edit.options;
 
 import com.google.inject.Inject;
 import me.piggypiglet.framework.bukkit.user.BukkitUser;
-import me.piggypiglet.randomspawn.commands.spawn.edit.AbstractEditCommand;
+import me.piggypiglet.randomspawn.commands.spawn.ModifyModeCommand;
 import me.piggypiglet.randomspawn.lang.Lang;
 import me.piggypiglet.randomspawn.managers.PendingSpawnManager;
 
@@ -10,7 +10,7 @@ import me.piggypiglet.randomspawn.managers.PendingSpawnManager;
 // Copyright (c) PiggyPiglet 2019
 // https://www.piggypiglet.me
 // ------------------------------
-public final class SetDistanceFromClaimCommand extends AbstractEditCommand {
+public final class SetDistanceFromClaimCommand extends ModifyModeCommand {
     @Inject private PendingSpawnManager pendingSpawnManager;
 
     public SetDistanceFromClaimCommand() {

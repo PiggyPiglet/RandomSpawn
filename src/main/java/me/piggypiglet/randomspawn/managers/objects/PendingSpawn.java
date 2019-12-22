@@ -1,4 +1,4 @@
-package me.piggypiglet.randomspawn.commands.spawn.create.objects;
+package me.piggypiglet.randomspawn.managers.objects;
 
 import me.piggypiglet.randomspawn.data.spawn.Spawn;
 

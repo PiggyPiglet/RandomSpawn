@@ -5,7 +5,7 @@ import me.piggypiglet.randomspawn.data.spawn.Spawn;
 import org.bukkit.Location;
 import org.bukkit.World;
 
-import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.Set;
 
 // ------------------------------
@@ -30,6 +30,6 @@ public final class SetSpawn extends Spawn {
 
     @Override
     protected Spawn copy() {
-        return new SetSpawn(getName(), getType(), getPermission(), isEnabled(), getWorld(), getOptions().dupe(), new HashSet<>(locations));
+        return new SetSpawn(getName(), getType(), getPermission(), isEnabled(), getWorld(), getOptions().dupe(), new LinkedHashSet<>(locations));
     }
 }

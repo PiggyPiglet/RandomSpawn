@@ -3,8 +3,8 @@ package me.piggypiglet.randomspawn.managers;
 import com.google.inject.Singleton;
 import me.piggypiglet.framework.managers.Manager;
 import me.piggypiglet.framework.managers.objects.KeyTypeInfo;
-import me.piggypiglet.randomspawn.commands.spawn.create.objects.PendingSpawn;
 import me.piggypiglet.randomspawn.data.spawn.Spawn;
+import me.piggypiglet.randomspawn.managers.objects.PendingSpawn;
 
 import java.util.Collection;
 import java.util.Map;

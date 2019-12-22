@@ -1,6 +1,6 @@
 package me.piggypiglet.randomspawn.data.options.types.list;
 
-import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.Set;
 
 // ------------------------------
@@ -33,7 +33,7 @@ public final class List {
     }
 
     public List dupe() {
-        return new List(enabled, new HashSet<>(values));
+        return new List(enabled, new LinkedHashSet<>(values));
     }
 
     @Override
