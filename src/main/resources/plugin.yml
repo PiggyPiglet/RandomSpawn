@@ -6,9 +6,3 @@ version: @version@
 prefix: RS
 api-version: "1.13"
 website: https://piggypiglet.me
-
-commands:
-  randomspawn:
-    aliases: [rs]
-    description: RandomSpawn main command.
-    permission: randomspawn.default

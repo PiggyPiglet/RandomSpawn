@@ -20,7 +20,7 @@ public final class RandomSpawn extends JavaPlugin {
         Framework.builder()
                 .main(JavaPlugin.class, this)
                 .pckg("me.piggypiglet.randomspawn")
-                .commandPrefix("randomspawn")
+                .commandPrefixes("rs", "randomspawn")
                 .fileDir(getDataFolder().getPath())
                 .file(true, "config", "/config.yml", "config.yml", Config.class)
                 .file(true, "data", "/data.yml", "data.yml", Data.class)

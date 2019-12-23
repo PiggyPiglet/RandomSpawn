@@ -22,7 +22,7 @@ repositories {
 }
 
 dependencies {
-    compile 'me.piggypiglet:framework-bukkit:1.8.7'
+    compile 'me.piggypiglet:framework-bukkit:1.8.8'
     compile 'org.bstats:bstats-bukkit:1.5'
     compileOnly 'org.bukkit:bukkit:1.12.2-R0.1-SNAPSHOT'
 }
