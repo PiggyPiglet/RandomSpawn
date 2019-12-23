@@ -32,7 +32,7 @@ public final class NewSpawnCommand extends BukkitCommand {
         options
                 .playerOnly(true)
                 .permissions("randomspawn.admin", "randomspawn.create")
-                .usage("<name> <type> [permission] [radius]")
+                .usage("<name> <type> [radius]")
                 .description("Create a spawn.");
     }
 
@@ -45,7 +45,7 @@ public final class NewSpawnCommand extends BukkitCommand {
             return true;
         }
 
-        if (args.length >= 2) {
+        if (args.length > 1) {
             final String name = args[0];
 
             if (spawnManager.exists(name)) {
@@ -61,8 +61,7 @@ public final class NewSpawnCommand extends BukkitCommand {
                 return false;
             }
 
-            Spawn spawn = new SpawnData(name, type, args.length >= 3 ? args[3] : "randomspawn.spawns." + name, true, player.getWorld(), config.getOptions());
-            user.sendMessage(Lang.CREATE_ENABLED);
+            Spawn spawn = new SpawnData(name, type, "randomspawn.spawns." + name, true, player.getWorld(), config.getOptions());
 
             switch (type) {
                 case SET:
@@ -72,12 +71,12 @@ public final class NewSpawnCommand extends BukkitCommand {
 
                 case SQUARE:
                 case CIRCLE:
-                    if (args.length >= 4) {
+                    if (args.length > 2) {
                         final Location location = player.getLocation();
                         final int radius;
 
                         try {
-                            radius = Integer.parseInt(args[3]);
+                            radius = Integer.parseInt(args[2]);
                         } catch (Exception e) {
                             return false;
                         }
@@ -92,6 +91,7 @@ public final class NewSpawnCommand extends BukkitCommand {
                     break;
             }
 
+            user.sendMessage(Lang.CREATE_ENABLED);
             pendingSpawnManager.add(new PendingSpawn(player.getUniqueId(), spawn));
             user.sendMessage(Lang.CONFIRM);
             return true;

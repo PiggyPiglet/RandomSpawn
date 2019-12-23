@@ -1,4 +1,4 @@
-package me.piggypiglet.randomspawn.commands.spawn.modify.types.options;
+package me.piggypiglet.randomspawn.commands.spawn.modify.types.options.toggle;
 
 import me.piggypiglet.framework.bukkit.user.BukkitUser;
 import me.piggypiglet.randomspawn.commands.spawn.modify.ModifyModeCommand;

@@ -16,10 +16,14 @@ repositories {
     maven {
         url = 'https://hub.spigotmc.org/nexus/content/groups/public/'
     }
+    maven {
+        url = 'https://repo.codemc.org/repository/maven-public/'
+    }
 }
 
 dependencies {
-    compile 'me.piggypiglet:framework-bukkit:1.8.4'
+    compile 'me.piggypiglet:framework-bukkit:1.8.7'
+    compile 'org.bstats:bstats-bukkit:1.5'
     compileOnly 'org.bukkit:bukkit:1.12.2-R0.1-SNAPSHOT'
 }
 
@@ -40,6 +44,8 @@ shadowJar {
             }
         }
     }
+
+    relocate 'org.bstats', 'me.piggypiglet.bstats'
 }
 
 clean {

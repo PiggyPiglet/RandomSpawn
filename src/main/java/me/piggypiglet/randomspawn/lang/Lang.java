@@ -23,7 +23,8 @@ public enum Lang implements LangEnum {
     SET_CENTER("commands.modify.radius.center"),
     SET_RADIUS("commands.modify.radius.radius"),
 
-    INDEX_TOO_BIG("commands.modify.set.remove.index_too_big"),
+    INDEX_TOO_BIG("commands.modify.remove.index_too_big"),
+
     REMOVED_LOCATION("commands.modify.set.remove.success"),
 
     UNKNOWN_SPAWN("commands.edit.unknown"),
@@ -36,16 +37,34 @@ public enum Lang implements LangEnum {
     LIST_MODIFICATION_REMOVED("commands.edit.toggle.list_mod.removed"),
     HOOK_UPDATE("commands.edit.toggle.update"),
 
+    LIST_ADDED("commands.modify.options.list.added"),
+    LIST_REMOVED("commands.modify.options.list.removed"),
+
     LIST_HEADER("commands.list.header"),
     LIST_FORMAT("commands.list.format"),
     LIST_FOOTER("commands.list.footer"),
 
     INFO_HEADER("commands.info.header"),
-    INFO_FORMAT("commands.info.format"),
+    INFO_FORMAT("commands.info.main_format"),
     INFO_FOOTER("commands.info.footer"),
     INFO_SET_ADDENDUM("commands.info.set.addendum"),
     INFO_SET_FORMAT("commands.info.set.format"),
     INFO_RADIUS_ADDENDUM("commands.info.radius.addendum"),
+
+    INFO_OTHER_HEADER("commands.info.other_formats.format.header"),
+    INFO_OTHER_FOOTER("commands.info.other_formats.format.footer"),
+    INFO_OTHER_LIST_BODY("commands.info.other_formats.format.list.body"),
+    INFO_OTHER_LIST_FORMAT("commands.info.other_formats.format.list.format"),
+    INFO_OTHER_HOOKS_BODY("commands.info.other_formats.format.hooks.body"),
+    INFO_OTHER_FACTIONS_FORMAT("commands.info.other_formats.format.factions"),
+    INFO_OTHER_GRIEFPREVENTION_FORMAT("commands.info.other_formats.format.griefprevention"),
+    INFO_OTHER_BLOCKS("commands.info.other_formats.blocks"),
+    INFO_OTHER_BIOMES("commands.info.other_formats.biomes"),
+    INFO_OTHER_WORLDS("commands.info.other_formats.worlds"),
+    INFO_OTHER_HOOKS("commands.info.other_formats.hooks"),
+    INFO_OTHER_WORLDGUARD("commands.info.other_formats.worldguard"),
+    INFO_OTHER_FACTIONS("commands.info.other_formats.factions"),
+    INFO_OTHER_GRIEFPREVENTION("commands.info.other_formats.griefprevention"),
 
     SAVE_SUCCESS("commands.save.success"),
 

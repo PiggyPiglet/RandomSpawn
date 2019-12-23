@@ -3,17 +3,21 @@ commands:
   in_pending: "&7You are already in edit/create mode. Run &c/rs cancel &7to exit."
   success: "&7Successfully edited/created spawn."
   modify:
+    remove:
+      index_too_big: "&7An index of &c%s &7is too big, the max index is &c%s&7."
     set:
       add:
         not: "Locations cannot be manually added to this type of spawn."
         success: "&7Successfully added x: &c%s&7, y: &c%s&7, z: &c%s&7, yaw: &c%s&7, pitch: &c%s&7."
       remove:
-        index_too_big: "&7An index of &c%s &7is too big, the max index is &c%s&7."
         success: "&7Successfully removed location &c%s&7."
     radius:
       center: "&7Successfully set the center to &c%s&7, &c%s&7."
       radius: "&7Successfully set the radius to &c%s&7."
-
+    options:
+      list:
+        added: "&7Successfully added &c%s &7to the list."
+        removed: "&7Successfully removed index &c%s &7from the list."
   create:
     already_exists: "&7A spawn by the name of &c%s &7already exists."
     enabled: "&7Create mode enabled. Use &c/rs cancel &7to exit."
@@ -35,12 +39,44 @@ commands:
       success: "&7Set &c%s &7as the new distance from claim value."
   info:
     header: "&7-------- &c%s &7--------"
-    format: |
+    main_format: |
       &7Name&8: &c%1$s
       &7Type&8: &c%s
       &7Permission&8: &c%s
       &7World&8: &c%s
       &7Enabled&8: &c%s
+      &7Respawn&8: &c%s
+      &7Safe Location&8: &c%s
+    other_formats:
+      format:
+        header: "&7-------- &c%s &8(&c%s&8) &7--------"
+        footer: "&7-------- &c%1$s &8(&c%2$s&8) &7--------"
+        list:
+          body: |
+            &7Whitelist (&c%s&7)&8: &c%s
+            &7Blacklist (&c%s&7)&8: &c%s
+          format: "&7%s&8: &c%s"
+        hooks:
+          body: |
+            &7Enabled&8: &c%s
+            &7Values&8: &c%s
+        factions: |
+          &7Safezone&8: &c%s
+          &7Warzone&8: &c%s
+          &7Wilderness&8: &c%s
+          &7Enemy&8: &c%s
+          &7Own&8: &c%s
+        griefprevention: |
+          &7Own&8: &c%s
+          &7Other&8: &c%s
+          &7Wilderness&8: &c%s
+      blocks: "Blocks"
+      biomes: "Biomes"
+      worlds: "Worlds"
+      hooks: "Hooks"
+      worldguard: "WorldGuard"
+      factions: "Factions"
+      griefprevention: "GriefPrevention"
     set:
       addendum: "&7Locations&8: %s"
       format: "&c%s&8: &7x: &c%s&7, y: &c%s&7, z: &c%s&7, yaw: &c%s&7, pitch: &c%s&7."
