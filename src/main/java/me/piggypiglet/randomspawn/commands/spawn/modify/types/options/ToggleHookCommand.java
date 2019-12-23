@@ -1,12 +1,11 @@
-package me.piggypiglet.randomspawn.commands.spawn.edit.options;
+package me.piggypiglet.randomspawn.commands.spawn.modify.types.options;
 
-import com.google.inject.Inject;
 import me.piggypiglet.framework.bukkit.user.BukkitUser;
-import me.piggypiglet.randomspawn.commands.spawn.ModifyModeCommand;
+import me.piggypiglet.randomspawn.commands.spawn.modify.ModifyModeCommand;
 import me.piggypiglet.randomspawn.data.options.types.hook.HookTypes;
 import me.piggypiglet.randomspawn.data.options.types.hook.Hooks;
+import me.piggypiglet.randomspawn.data.spawn.Spawn;
 import me.piggypiglet.randomspawn.lang.Lang;
-import me.piggypiglet.randomspawn.managers.PendingSpawnManager;
 
 import java.util.Set;
 
@@ -14,20 +13,17 @@ import java.util.Set;
 // Copyright (c) PiggyPiglet 2019
 // https://www.piggypiglet.me
 // ------------------------------
-public final class ToggleHookCommand extends ModifyModeCommand {
-    @Inject private PendingSpawnManager pendingSpawnManager;
-
+public final class ToggleHookCommand extends ModifyModeCommand<Spawn> {
     public ToggleHookCommand() {
         super("hook toggle");
-        options
-                .playerOnly(true)
+        options.root()
                 .description("Toggle a hook for a spawn.")
                 .usage("[hook] [true/false]");
     }
 
     @Override
-    protected boolean execute(BukkitUser user, String[] args) {
-        final Hooks hooks = pendingSpawnManager.get(user.getAsPlayer().getUuid()).getSpawn().getOptions().getHooks();
+    protected boolean execute(Spawn spawn, BukkitUser user, String[] args) {
+        final Hooks hooks = spawn.getOptions().getHooks();
 
         if (args.length == 0) {
             hooks.getHooks().setEnabled(!hooks.getHooks().isEnabled());

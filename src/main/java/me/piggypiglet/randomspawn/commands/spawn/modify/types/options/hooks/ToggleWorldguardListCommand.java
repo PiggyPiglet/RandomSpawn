@@ -1,12 +1,11 @@
-package me.piggypiglet.randomspawn.commands.spawn.edit.options.hooks;
+package me.piggypiglet.randomspawn.commands.spawn.modify.types.options.hooks;
 
-import com.google.inject.Inject;
 import me.piggypiglet.framework.bukkit.user.BukkitUser;
-import me.piggypiglet.randomspawn.commands.spawn.ModifyModeCommand;
+import me.piggypiglet.randomspawn.commands.spawn.modify.ModifyModeCommand;
 import me.piggypiglet.randomspawn.data.options.types.list.List;
 import me.piggypiglet.randomspawn.data.options.types.list.Lists;
+import me.piggypiglet.randomspawn.data.spawn.Spawn;
 import me.piggypiglet.randomspawn.lang.Lang;
-import me.piggypiglet.randomspawn.managers.PendingSpawnManager;
 
 import java.util.Set;
 
@@ -14,23 +13,19 @@ import java.util.Set;
 // Copyright (c) PiggyPiglet 2019
 // https://www.piggypiglet.me
 // ------------------------------
-public final class ToggleWorldguardListCommand extends ModifyModeCommand {
-    @Inject private PendingSpawnManager pendingSpawnManager;
-
+public final class ToggleWorldguardListCommand extends ModifyModeCommand<Spawn> {
     public ToggleWorldguardListCommand() {
         super("worldguard toggle");
-        options
-                .playerOnly(true)
-                .permissions("randomspawn.admin", "randomspawn.edit")
+        options.root()
                 .description("Toggle a list/list value for the worldguard hook on a spawn.")
                 .usage("<list> [value]");
     }
 
     @Override
-    protected boolean execute(BukkitUser user, String[] args) {
+    protected boolean execute(Spawn spawn, BukkitUser user, String[] args) {
         if (args.length >= 1) {
             args[0] = args[0].toLowerCase();
-            final Lists worldguard = pendingSpawnManager.get(user.getAsPlayer().getUuid()).getSpawn().getOptions().getHooks().getWorldGuard();
+            final Lists worldguard = spawn.getOptions().getHooks().getWorldGuard();
             final List list;
 
             if (args[0].equals("whitelist")) {

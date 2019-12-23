@@ -1,34 +1,28 @@
-package me.piggypiglet.randomspawn.commands.spawn.edit.options.hooks;
+package me.piggypiglet.randomspawn.commands.spawn.modify.types.options.hooks;
 
-import com.google.inject.Inject;
 import me.piggypiglet.framework.bukkit.user.BukkitUser;
-import me.piggypiglet.randomspawn.commands.spawn.ModifyModeCommand;
+import me.piggypiglet.randomspawn.commands.spawn.modify.ModifyModeCommand;
 import me.piggypiglet.randomspawn.data.options.types.hook.GriefPrevention;
+import me.piggypiglet.randomspawn.data.spawn.Spawn;
 import me.piggypiglet.randomspawn.lang.Lang;
-import me.piggypiglet.randomspawn.managers.PendingSpawnManager;
 
 // ------------------------------
 // Copyright (c) PiggyPiglet 2019
 // https://www.piggypiglet.me
 // ------------------------------
-public final class ToggleGriefPreventionCommand extends ModifyModeCommand {
-    @Inject private PendingSpawnManager pendingSpawnManager;
-
+public final class ToggleGriefPreventionCommand extends ModifyModeCommand<Spawn> {
     public ToggleGriefPreventionCommand() {
         super("griefprevention toggle");
-        options
-                .playerOnly(true)
+        options.root()
                 .description("Toggle a griefprevention hook value for a spawn.")
-                .usage("<key> [value]")
-                .permissions("randomspawn.admin", "randomspawn.edit");
+                .usage("<key> [value]");
     }
 
     @Override
-    protected boolean execute(BukkitUser user, String[] args) {
+    protected boolean execute(Spawn spawn, BukkitUser user, String[] args) {
         if (args.length >= 1) {
             args[0] = args[0].toLowerCase();
-            final GriefPrevention griefPrevention = pendingSpawnManager.get(user.getAsPlayer().getUuid()).getSpawn().getOptions().getHooks().getGriefPrevention();
-            final boolean newVal;
+            final GriefPrevention griefPrevention = spawn.getOptions().getHooks().getGriefPrevention();
             Boolean setValue = null;
 
             if (args.length >= 2) {

@@ -1,12 +1,9 @@
-package me.piggypiglet.randomspawn.commands.spawn.types.set;
+package me.piggypiglet.randomspawn.commands.spawn.modify.types.set;
 
-import com.google.inject.Inject;
 import me.piggypiglet.framework.bukkit.user.BukkitUser;
-import me.piggypiglet.randomspawn.commands.spawn.ModifyModeCommand;
-import me.piggypiglet.randomspawn.data.spawn.Spawn;
+import me.piggypiglet.randomspawn.commands.spawn.modify.ModifyModeCommand;
 import me.piggypiglet.randomspawn.data.spawn.types.SetSpawn;
 import me.piggypiglet.randomspawn.lang.Lang;
-import me.piggypiglet.randomspawn.managers.PendingSpawnManager;
 import org.bukkit.Location;
 
 import java.util.Iterator;
@@ -16,9 +13,7 @@ import java.util.Set;
 // Copyright (c) PiggyPiglet 2019
 // https://www.piggypiglet.me
 // ------------------------------
-public final class RemoveLocationCommand extends ModifyModeCommand {
-    @Inject private PendingSpawnManager pendingSpawnManager;
-
+public final class RemoveLocationCommand extends ModifyModeCommand<SetSpawn> {
     public RemoveLocationCommand() {
         super("location remove");
         options
@@ -29,15 +24,8 @@ public final class RemoveLocationCommand extends ModifyModeCommand {
     }
 
     @Override
-    protected boolean execute(BukkitUser user, String[] args) {
-        final Spawn spawn = pendingSpawnManager.get(user.getAsPlayer().getUuid()).getSpawn();
-
-        if (!(spawn instanceof SetSpawn)) {
-            user.sendMessage(Lang.NOT_SET_SPAWN);
-            return true;
-        }
-
-        final Set<Location> locations = ((SetSpawn) spawn).getLocations();
+    protected boolean execute(SetSpawn spawn, BukkitUser user, String[] args) {
+        final Set<Location> locations = spawn.getLocations();
         final int index;
 
         try {

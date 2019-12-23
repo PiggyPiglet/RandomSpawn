@@ -1,4 +1,4 @@
-package me.piggypiglet.randomspawn.commands.spawn.edit;
+package me.piggypiglet.randomspawn.commands.spawn.modify.edit;
 
 import com.google.inject.Inject;
 import me.piggypiglet.framework.bukkit.commands.framework.BukkitCommand;

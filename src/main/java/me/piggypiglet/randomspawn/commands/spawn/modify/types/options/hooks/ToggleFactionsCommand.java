@@ -1,33 +1,28 @@
-package me.piggypiglet.randomspawn.commands.spawn.edit.options.hooks;
+package me.piggypiglet.randomspawn.commands.spawn.modify.types.options.hooks;
 
-import com.google.inject.Inject;
 import me.piggypiglet.framework.bukkit.user.BukkitUser;
-import me.piggypiglet.randomspawn.commands.spawn.ModifyModeCommand;
+import me.piggypiglet.randomspawn.commands.spawn.modify.ModifyModeCommand;
 import me.piggypiglet.randomspawn.data.options.types.hook.Factions;
+import me.piggypiglet.randomspawn.data.spawn.Spawn;
 import me.piggypiglet.randomspawn.lang.Lang;
-import me.piggypiglet.randomspawn.managers.PendingSpawnManager;
 
 // ------------------------------
 // Copyright (c) PiggyPiglet 2019
 // https://www.piggypiglet.me
 // ------------------------------
-public final class ToggleFactionsCommand extends ModifyModeCommand {
-    @Inject private PendingSpawnManager pendingSpawnManager;
-
+public final class ToggleFactionsCommand extends ModifyModeCommand<Spawn> {
     public ToggleFactionsCommand() {
         super("factions toggle");
-        options
-                .playerOnly(true)
+        options.root()
                 .usage("<key> [value]")
-                .description("Toggle a factions hook value for a spawn.")
-                .permissions("randomspawn.admin", "randomspawn.edit");
+                .description("Toggle a factions hook value for a spawn.");
     }
 
     @Override
-    protected boolean execute(BukkitUser user, String[] args) {
+    protected boolean execute(Spawn spawn, BukkitUser user, String[] args) {
         if (args.length >= 1) {
             args[0] = args[0].toLowerCase();
-            final Factions factions = pendingSpawnManager.get(user.getAsPlayer().getUuid()).getSpawn().getOptions().getHooks().getFactions();
+            final Factions factions = spawn.getOptions().getHooks().getFactions();
             Boolean setValue = null;
 
             if (args.length >= 2) {
