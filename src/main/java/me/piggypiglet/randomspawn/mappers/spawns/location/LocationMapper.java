@@ -27,6 +27,6 @@ public final class LocationMapper implements ObjectMapper<String, Location> {
 
     @Override
     public String typeToData(Location location) {
-        return String.format("%s,%s,%s,%s,%s", location.getX(), location.getY(), location.getZ(), location.getYaw(), location.getPitch());
+        return String.format("%s,%s,%s,%s,%s", location.getBlockX(), location.getBlockY(), location.getBlock(), (int) location.getYaw(), (int) location.getPitch());
     }
 }

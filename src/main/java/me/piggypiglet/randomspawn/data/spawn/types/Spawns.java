@@ -10,6 +10,7 @@ public enum Spawns {
     SET(SetSpawn.class),
     CIRCLE(RadiusSpawn.class),
     SQUARE(RadiusSpawn.class),
+    RECTANGLE(RectangleSpawn.class),
     UNKNOWN(null);
 
     private final Class<? extends Spawn> type;

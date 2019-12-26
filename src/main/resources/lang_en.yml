@@ -14,6 +14,8 @@ commands:
     radius:
       center: "&7Successfully set the center to &c%s&7, &c%s&7."
       radius: "&7Successfully set the radius to &c%s&7."
+    rectangle:
+      corner: "&7Successfully set corner &c%s&7 to &c%s&7, &c%s&7."
     options:
       list:
         added: "&7Successfully added &c%s &7to the list."
@@ -23,6 +25,10 @@ commands:
     enabled: "&7Create mode enabled. Use &c/rs cancel &7to exit."
     set:
       set: "&7Use &c/rs location add &7when in location to add a location. Do not change world."
+    radius:
+      set: "&7Use &c/rs set center &7to set your spawn's center, and &c/rs set radius &7to set the radius."
+    rectangle:
+      set: "&7Use &c/rs set corner 1&4/&c2 &7to set your spawn's corners."
     confirm: "&7Run &c/rs confirm &7when you're finished to create the spawn."
   edit:
     unknown: "&7There is no spawn with that name, did you mean &c%s&7?"

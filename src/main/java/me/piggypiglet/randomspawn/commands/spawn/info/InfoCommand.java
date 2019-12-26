@@ -121,7 +121,7 @@ public final class InfoCommand extends BukkitCommand {
             addendum = StringUtils.format(Lang.INFO_SET_ADDENDUM, "\n" + String.join("\n", locations));
         } else {
             final RadiusSpawn radiusSpawn = (RadiusSpawn) spawn;
-            final double[] center = radiusSpawn.getCenter();
+            final int[] center = radiusSpawn.getCenter();
             addendum = StringUtils.format(Lang.INFO_RADIUS_ADDENDUM, round(center[0]), round(center[1]), radiusSpawn.getRadius());
         }
 

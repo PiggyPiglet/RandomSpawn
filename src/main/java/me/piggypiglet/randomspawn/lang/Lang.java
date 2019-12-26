@@ -14,7 +14,10 @@ public enum Lang implements LangEnum {
     SPAWN_ALREADY_EXISTS("commands.create.already_exists"),
     CREATE_ENABLED("commands.create.enabled"),
     CONFIRM("commands.create.confirm"),
+
     SET_SET("commands.create.set.set"),
+    RADIUS_SET("commands.create.radius.set"),
+    RECTANGLE_SET("commands.create.rectangle.set"),
 
     NOT_SET_SPAWN("commands.modify.set.add.not"),
     ADDED_LOCATION("commands.modify.set.add.success"),
@@ -22,6 +25,8 @@ public enum Lang implements LangEnum {
     NOT_RADIUS_SPAWN("commands.modify.radius.not"),
     SET_CENTER("commands.modify.radius.center"),
     SET_RADIUS("commands.modify.radius.radius"),
+
+    SET_CORNER("commands.modify.rectangle.corner"),
 
     INDEX_TOO_BIG("commands.modify.remove.index_too_big"),
 

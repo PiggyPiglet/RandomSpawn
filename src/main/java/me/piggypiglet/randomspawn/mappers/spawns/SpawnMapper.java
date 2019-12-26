@@ -3,10 +3,12 @@ package me.piggypiglet.randomspawn.mappers.spawns;
 import me.piggypiglet.framework.mapper.ObjectMapper;
 import me.piggypiglet.randomspawn.data.spawn.Spawn;
 import me.piggypiglet.randomspawn.data.spawn.types.RadiusSpawn;
+import me.piggypiglet.randomspawn.data.spawn.types.RectangleSpawn;
 import me.piggypiglet.randomspawn.data.spawn.types.SetSpawn;
 import me.piggypiglet.randomspawn.data.spawn.types.Spawns;
 import me.piggypiglet.randomspawn.mappers.spawns.types.RadiusSpawnMapper;
 import me.piggypiglet.randomspawn.mappers.spawns.types.SetSpawnMapper;
+import me.piggypiglet.randomspawn.mappers.spawns.types.rectangle.RectangleSpawnMapper;
 
 import java.util.Map;
 
@@ -17,6 +19,7 @@ import java.util.Map;
 public final class SpawnMapper implements ObjectMapper<Map.Entry<String, Map<String, Object>>, Spawn> {
     private static final SetSpawnMapper SET_SPAWN_MAPPER = new SetSpawnMapper();
     private static final RadiusSpawnMapper RADIUS_SPAWN_MAPPER = new RadiusSpawnMapper();
+    private static final RectangleSpawnMapper RECTANGLE_SPAWN_MAPPER = new RectangleSpawnMapper();
 
     @Override
     public Spawn dataToType(Map.Entry<String, Map<String, Object>> spawn) {
@@ -27,6 +30,9 @@ public final class SpawnMapper implements ObjectMapper<Map.Entry<String, Map<Str
             case SQUARE:
             case CIRCLE:
                 return RADIUS_SPAWN_MAPPER.dataToType(spawn);
+
+            case RECTANGLE:
+                return RECTANGLE_SPAWN_MAPPER.dataToType(spawn);
         }
 
         return null;
@@ -41,6 +47,9 @@ public final class SpawnMapper implements ObjectMapper<Map.Entry<String, Map<Str
             case SQUARE:
             case CIRCLE:
                 return RADIUS_SPAWN_MAPPER.typeToData((RadiusSpawn) spawn);
+
+            case RECTANGLE:
+                return RECTANGLE_SPAWN_MAPPER.typeToData((RectangleSpawn) spawn);
         }
 
         return null;

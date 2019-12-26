@@ -42,7 +42,7 @@ public final class SpawnManager extends SearchableManager<Spawn> {
 
     @Override
     protected void postConfigure() {
-        final Multimap<Spawn, double[]> locations = ArrayListMultimap.create();
+        final Multimap<Spawn, int[]> locations = ArrayListMultimap.create();
 
         task.sync(r -> spawns.values().forEach(s -> {
             final World world = s.getWorld();
@@ -63,9 +63,9 @@ public final class SpawnManager extends SearchableManager<Spawn> {
         }));
     }
 
-    private Set<double[]> from(Set<Location> locations) {
+    private Set<int[]> from(Set<Location> locations) {
         return locations.stream()
-                .map(l -> new double[] {l.getX(), l.getY(), l.getZ(), l.getYaw(), l.getPitch()})
+                .map(l -> new int[] {l.getBlockX(), l.getBlockX(), l.getBlockX(), (int) l.getYaw(), (int) l.getPitch()})
                 .collect(Collectors.toSet());
     }
 
