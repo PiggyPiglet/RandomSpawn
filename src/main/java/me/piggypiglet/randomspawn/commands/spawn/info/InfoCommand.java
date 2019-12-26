@@ -14,6 +14,7 @@ import me.piggypiglet.randomspawn.data.options.types.list.List;
 import me.piggypiglet.randomspawn.data.options.types.list.Lists;
 import me.piggypiglet.randomspawn.data.spawn.Spawn;
 import me.piggypiglet.randomspawn.data.spawn.types.RadiusSpawn;
+import me.piggypiglet.randomspawn.data.spawn.types.RectangleSpawn;
 import me.piggypiglet.randomspawn.data.spawn.types.SetSpawn;
 import me.piggypiglet.randomspawn.lang.Lang;
 import me.piggypiglet.randomspawn.managers.PendingSpawnManager;
@@ -31,8 +32,10 @@ import static me.piggypiglet.randomspawn.utils.MathUtils.round;
 // https://www.piggypiglet.me
 // ------------------------------
 public final class InfoCommand extends BukkitCommand {
-    @Inject private SpawnManager spawnManager;
-    @Inject private PendingSpawnManager pendingSpawnManager;
+    @Inject
+    private SpawnManager spawnManager;
+    @Inject
+    private PendingSpawnManager pendingSpawnManager;
 
     public InfoCommand() {
         super("info");
@@ -51,7 +54,22 @@ public final class InfoCommand extends BukkitCommand {
         } else {
             if (args.length == 0) return false;
 
-            spawn = spawnManager.get(args[0].toLowerCase());
+            args[0] = args[0].toLowerCase();
+
+            if (spawnManager.exists(args[0])) {
+                spawn = spawnManager.get(args[0]);
+            } else {
+                java.util.List<Spawn> results = spawnManager.search(args[0]);
+
+                if (!results.isEmpty()) {
+                    user.sendMessage(Lang.UNKNOWN, results.get(0).getName());
+                } else {
+                    user.sendMessage(Lang.NO_SPAWNS);
+                }
+
+                return true;
+            }
+
             args = Arrays.stream(args)
                     .skip(1)
                     .toArray(String[]::new);
@@ -112,17 +130,33 @@ public final class InfoCommand extends BukkitCommand {
 
         final String addendum;
 
-        if (spawn instanceof SetSpawn) {
-            final AtomicInteger i = new AtomicInteger();
-            final Set<String> locations = ((SetSpawn) spawn).getLocations().stream()
-                    .map(l -> StringUtils.format(Lang.INFO_SET_FORMAT, i.getAndIncrement(), round(l.getX()), round(l.getY()), round(l.getZ()), round(l.getYaw()), round(l.getPitch())))
-                    .collect(Collectors.toSet());
+        switch (spawn.getType()) {
+            case SET:
+                final AtomicInteger i = new AtomicInteger();
+                final Set<String> locations = ((SetSpawn) spawn).getLocations().stream()
+                        .map(l -> StringUtils.format(Lang.INFO_SET_FORMAT, i.getAndIncrement(), round(l.getX()), round(l.getY()), round(l.getZ()), round(l.getYaw()), round(l.getPitch())))
+                        .collect(Collectors.toSet());
 
-            addendum = StringUtils.format(Lang.INFO_SET_ADDENDUM, "\n" + String.join("\n", locations));
-        } else {
-            final RadiusSpawn radiusSpawn = (RadiusSpawn) spawn;
-            final int[] center = radiusSpawn.getCenter();
-            addendum = StringUtils.format(Lang.INFO_RADIUS_ADDENDUM, round(center[0]), round(center[1]), radiusSpawn.getRadius());
+                addendum = StringUtils.format(Lang.INFO_SET_ADDENDUM, "\n" + String.join("\n", locations));
+                break;
+
+            case CIRCLE:
+            case SQUARE:
+                final RadiusSpawn radiusSpawn = (RadiusSpawn) spawn;
+                final int[] center = radiusSpawn.getCenter();
+                addendum = StringUtils.format(Lang.INFO_RADIUS_ADDENDUM, center[0], center[1], radiusSpawn.getRadius());
+                break;
+
+            case RECTANGLE:
+                final RectangleSpawn rectangleSpawn = (RectangleSpawn) spawn;
+                final int[] corner1 = rectangleSpawn.getCorner1();
+                final int[] corner2 = rectangleSpawn.getCorner2();
+                addendum = StringUtils.format(Lang.INFO_RECTANGLE_ADDENDUM, corner1[0], corner1[1], corner2[0], corner2[1]);
+                break;
+
+            default:
+                user.sendMessage(Lang.BAD_SPAWN, spawn.getType());
+                return true;
         }
 
         user.sendMessage(Lang.INFO_HEADER, "\n", Lang.INFO_FORMAT, "\n", addendum, "\n", Lang.INFO_FOOTER,

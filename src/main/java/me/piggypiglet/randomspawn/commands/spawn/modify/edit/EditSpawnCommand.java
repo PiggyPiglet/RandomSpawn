@@ -46,7 +46,7 @@ public final class EditSpawnCommand extends BukkitCommand {
                 if (spawns.isEmpty()) {
                     user.sendMessage(Lang.NO_SPAWNS);
                 } else {
-                    user.sendMessage(Lang.UNKNOWN_SPAWN, spawns.get(0).getName());
+                    user.sendMessage(Lang.UNKNOWN, spawns.get(0).getName());
                 }
 
                 return true;

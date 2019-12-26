@@ -2,6 +2,8 @@ commands:
   not_pending: "&7You are not in edit/create mode."
   in_pending: "&7You are already in edit/create mode. Run &c/rs cancel &7to exit."
   success: "&7Successfully edited/created spawn."
+  unknown: "&7There is no spawn with that name, did you mean &c%s&7?"
+  no_spawns: "&7There are no spawns configured."
   modify:
     remove:
       index_too_big: "&7An index of &c%s &7is too big, the max index is &c%s&7."
@@ -31,8 +33,6 @@ commands:
       set: "&7Use &c/rs set corner 1&4/&c2 &7to set your spawn's corners."
     confirm: "&7Run &c/rs confirm &7when you're finished to create the spawn."
   edit:
-    unknown: "&7There is no spawn with that name, did you mean &c%s&7?"
-    no_spawns: "&7There are no spawns to edit."
     enabled: "&7Edit mode enabled. Use &c/rs cancel &7to exit."
     toggle:
       hook: "&7Toggled hooks to &c%s&7."
@@ -53,6 +53,19 @@ commands:
       &7Enabled&8: &c%s
       &7Respawn&8: &c%s
       &7Safe Location&8: &c%s
+    footer: "&7-------- &7%1$s --------"
+    bad_config: "&7Unknown config type: &c%s&7."
+    set:
+      addendum: "&7Locations&8: %s"
+      format: "&c%s&8: &7x: &c%s&7, y: &c%s&7, z: &c%s&7, yaw: &c%s&7, pitch: &c%s&7."
+    radius:
+      addendum: |
+        &7Center&8: &c%s&7, &c%s
+        &7Radius&8: &c%s
+    rectangle:
+      addendum: |
+        &7Corner 1&8: &c%s&7, &c%s
+        &7Corner 2&8: &c%s&7, &c%s
     other_formats:
       format:
         header: "&7-------- &c%s &8(&c%s&8) &7--------"
@@ -83,14 +96,6 @@ commands:
       worldguard: "WorldGuard"
       factions: "Factions"
       griefprevention: "GriefPrevention"
-    set:
-      addendum: "&7Locations&8: %s"
-      format: "&c%s&8: &7x: &c%s&7, y: &c%s&7, z: &c%s&7, yaw: &c%s&7, pitch: &c%s&7."
-    radius:
-      addendum: |
-        &7Center&8: &c%s&7, &c%s
-        &7Radius&8: &c%s
-    footer: "&7------- &7%1$s -------"
   list:
     header: "&7-------- &cSpawns &7--------"
     format: "&8- &c%s &7(&c%s&7)"

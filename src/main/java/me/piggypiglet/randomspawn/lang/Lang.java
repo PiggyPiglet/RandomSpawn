@@ -10,6 +10,8 @@ public enum Lang implements LangEnum {
     NOT_PENDING("commands.not_pending"),
     IN_PENDING("commands.in_pending"),
     SUCCESS("commands.success"),
+    UNKNOWN("commands.unknown"),
+    NO_SPAWNS("commands.no_spawns"),
 
     SPAWN_ALREADY_EXISTS("commands.create.already_exists"),
     CREATE_ENABLED("commands.create.enabled"),
@@ -32,8 +34,6 @@ public enum Lang implements LangEnum {
 
     REMOVED_LOCATION("commands.modify.set.remove.success"),
 
-    UNKNOWN_SPAWN("commands.edit.unknown"),
-    NO_SPAWNS("commands.edit.no_spawns"),
     EDIT_ENABLED("commands.edit.enabled"),
     TOGGLED_HOOKS("commands.edit.toggle.hook"),
     DISTANCE_SUCCESS("commands.edit.dfc.success"),
@@ -55,6 +55,7 @@ public enum Lang implements LangEnum {
     INFO_SET_ADDENDUM("commands.info.set.addendum"),
     INFO_SET_FORMAT("commands.info.set.format"),
     INFO_RADIUS_ADDENDUM("commands.info.radius.addendum"),
+    INFO_RECTANGLE_ADDENDUM("commands.info.rectangle.addendum"),
 
     INFO_OTHER_HEADER("commands.info.other_formats.format.header"),
     INFO_OTHER_FOOTER("commands.info.other_formats.format.footer"),
@@ -70,6 +71,8 @@ public enum Lang implements LangEnum {
     INFO_OTHER_WORLDGUARD("commands.info.other_formats.worldguard"),
     INFO_OTHER_FACTIONS("commands.info.other_formats.factions"),
     INFO_OTHER_GRIEFPREVENTION("commands.info.other_formats.griefprevention"),
+
+    BAD_SPAWN("commands.info.bad_spawn"),
 
     SAVE_SUCCESS("commands.save.success"),
 
