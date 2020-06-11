@@ -7,7 +7,10 @@ import com.google.gson.InstanceCreator;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
 import com.google.inject.name.Named;
+import me.piggypiglet.randomspawn.file.objects.serialization.SpawnSetSerializer;
 import me.piggypiglet.randomspawn.file.objects.spawn.location.serialization.LocationSerializer;
+import me.piggypiglet.randomspawn.file.objects.spawn.serialization.SpawnDeserializer;
+import me.piggypiglet.randomspawn.file.objects.spawn.types.intpair.serialization.IntPairSerializer;
 import me.piggypiglet.randomspawn.utils.file.FileUtils;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.jetbrains.annotations.NotNull;
@@ -16,9 +19,7 @@ import org.yaml.snakeyaml.Yaml;
 import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.Type;
-import java.util.Arrays;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicReference;
 
@@ -34,6 +35,9 @@ public final class FileManager {
     static {
         ADAPTERS = new HashMap<>();
         ADAPTERS.put(LocationSerializer.class, new LocationSerializer());
+        ADAPTERS.put(IntPairSerializer.class, new IntPairSerializer());
+        ADAPTERS.put(SpawnDeserializer.class, new SpawnDeserializer());
+        ADAPTERS.put(SpawnSetSerializer.class, new SpawnSetSerializer());
     }
 
     private final String dataFolder;

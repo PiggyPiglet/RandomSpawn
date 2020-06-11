@@ -2,6 +2,7 @@ package me.piggypiglet.randomspawn.file.objects.spawn.types;
 
 import me.piggypiglet.randomspawn.file.objects.spawn.Spawn;
 import me.piggypiglet.randomspawn.file.objects.spawn.location.Location;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.Set;
 
@@ -11,4 +12,9 @@ import java.util.Set;
 // ------------------------------
 public final class DefinedSpawn extends Spawn {
     private Set<Location> locations;
+
+    @NotNull
+    public Set<Location> getLocations() {
+        return locations;
+    }
 }
