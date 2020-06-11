@@ -11,9 +11,6 @@ sourceCompatibility = 1.8
 repositories {
     mavenCentral()
     maven {
-        url = 'https://repo.piggypiglet.me/repository/maven-releases/'
-    }
-    maven {
         url = 'https://hub.spigotmc.org/nexus/content/groups/public/'
     }
     maven {
@@ -22,8 +19,12 @@ repositories {
 }
 
 dependencies {
-    compile 'me.piggypiglet:framework-bukkit:1.8.9'
-    compile 'org.bstats:bstats-bukkit:1.5'
+    compileOnly 'org.jetbrains:annotations:+'
+    implementation("com.google.inject:guice:4.2.2") {
+        exclude group: "com.google.code.gson", module: "gson"
+        exclude group: "com.google.guava", module: "guava"
+    }
+    implementation 'org.bstats:bstats-bukkit:1.5'
     compileOnly 'org.bukkit:bukkit:1.12.2-R0.1-SNAPSHOT'
 }
 
@@ -45,7 +46,10 @@ shadowJar {
         }
     }
 
-    relocate 'org.bstats', 'me.piggypiglet.bstats'
+    relocate 'org.bstats', 'me.piggypiglet.randomspawn.bstats'
+    relocate 'com.google.inject', 'me.piggypiglet.randomspawn.guice'
+    relocate 'javax.inject', 'me.piggypiglet.randomspawn.javax'
+    relocate 'org.aopalliance', 'me.piggypiglet.randomspawn.aopalliance'
 }
 
 clean {

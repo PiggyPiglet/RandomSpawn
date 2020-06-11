@@ -36,8 +36,8 @@ options:
       - worldborder
       - factions
       - griefprevention
-    distance-from-claim: 50
     worldguard:
+      distance-from-claim: 50
       whitelist:
         enabled: false
         value:
@@ -48,14 +48,18 @@ options:
           - spawn
           - staff
     factions:
+      distance-from-claim: 50
       safezone: false
       warzone: true
       wilderness: true
       enemy: false
       own: false
     griefprevention:
+      distance-from-claim: 50
       own: false
       other: false
       wilderness: true
   respawn: true
   safe_location: true
+
+spawns:
